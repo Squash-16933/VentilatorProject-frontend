@@ -1,0 +1,29 @@
+{
+  "name": "ventilatorproject-frontend",
+  "version": "0.0.1",
+  "description": "This is the front-end for the VentilatorProject. It's written in HTML/CSS/JS and uses the [Material Design Web](https://material.io/develop/web) framework.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Squash-16933/VentilatorProject-frontend.git"
+  },
+  "keywords": [
+    "ventilator",
+    "teamsquash",
+    "leagueofamazingprogrammers",
+    "loap",
+    "html",
+    "css",
+    "js",
+    "materialdesign"
+  ],
+  "author": "Squash-16933",
+  "license": "",
+  "bugs": {
+    "url": "https://github.com/Squash-16933/VentilatorProject-frontend/issues"
+  },
+  "homepage": "https://github.com/Squash-16933/VentilatorProject-frontend#readme"
+}
