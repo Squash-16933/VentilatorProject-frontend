@@ -4,7 +4,9 @@
   "description": "This is the front-end for the VentilatorProject. It's written in HTML/CSS/JS and uses the [Material Design Web](https://material.io/develop/web) framework.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "sass ./css/sass:./css/compiled",
+    "babel": "babel ./js/compiled ./js/babel"
   },
   "repository": {
     "type": "git",
@@ -25,5 +27,12 @@
   "bugs": {
     "url": "https://github.com/Squash-16933/VentilatorProject-frontend/issues"
   },
-  "homepage": "https://github.com/Squash-16933/VentilatorProject-frontend#readme"
+  "homepage": "https://github.com/Squash-16933/VentilatorProject-frontend#readme",
+  "dependencies": {
+    "python": "0.0.4"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.11.1"
+  }
 }
