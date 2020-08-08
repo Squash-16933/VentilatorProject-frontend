@@ -9,49 +9,52 @@
     <link href="./css/normalize.css" rel="stylesheet">
 
     <!-- Import Material Design -->
-    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
     <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
-
-    <!-- Import Material icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-
-    <!-- <link href="./css/compiled/theme.css" rel="stylesheet"> -->
-
-    <link href="./css/compiled/app.css" rel="stylesheet">
-
-    <script>
-        require("@babel/core").transform("code", options);
-        import { MDCTopAppBar } from '@material/top-app-bar';
-
-        // Instantiation
-        const topAppBarElement = document.querySelector('.mdc-top-app-bar');
-        const topAppBar = new MDCTopAppBar(topAppBarElement);
-    </script>
+    <link href="./build/app.css" rel="stylesheet">
 </head>
 
-<body>
-    <button class="foo-button mdc-button">
-        <div class="mdc-button__ripple"></div>
-        <span class="mdc-button__label">Hiya world!</span>
-    </button>
-    <!-- <header class="mdc-top-app-bar">
-        <div class="mdc-top-app-bar__row">
-            <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-                <button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button"
-                    aria-label="Open navigation menu">menu</button>
-                <span class="mdc-top-app-bar__title">Home</span>
-            </section>
-            <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
-                <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button"
-                    aria-label="Favorite">favorite</button>
-                <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button"
-                    aria-label="Search">search</button>
-                <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button"
-                    aria-label="Options">more_vert</button>
-            </section>
+<body class="mdc-typography">
+    <aside class="mdc-drawer mdc-drawer--modal">
+        <div class="mdc-drawer__content">
+            <nav class="mdc-list">
+                <a class="mdc-list-item mdc-list-item--activated" href="#" aria-current="page" tabindex="0">
+                    <span class="mdc-list-item__ripple"></span>
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">home</i>
+                    <span class="mdc-list-item__text">Home</span>
+                </a>
+                <a class="mdc-list-item" href="#">
+                    <span class="mdc-list-item__ripple"></span>
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">settings</i>
+                    <span class="mdc-list-item__text">Settings</span>
+                </a>
+            </nav>
         </div>
-    </header> -->
+    </aside>
+
+    <div class="mdc-drawer-scrim"></div>
+    <div>
+        <header class="mdc-top-app-bar">
+            <div class="mdc-top-app-bar__row">
+                <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+                    <button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button"
+                        aria-label="Open navigation menu">menu</button>
+                    <span class="mdc-top-app-bar__title">Home</span>
+                </section>
+                <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
+                    <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button"
+                        aria-label="Favorite">favorite</button>
+                    <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button"
+                        aria-label="Search">search</button>
+                    <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button"
+                        aria-label="Options">more_vert</button>
+                </section>
+            </div>
+        </header>
+    </div>
+
+    <script src="./build/app.js"></script>
 </body>
 
 </html>
