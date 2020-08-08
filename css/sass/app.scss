@@ -1,18 +1,6 @@
-@use '@material/button/mdc-button';
-@use '@material/button';
-
-@use "@material/floating-label/mdc-floating-label";
-@use "@material/line-ripple/mdc-line-ripple";
-@use "@material/notched-outline/mdc-notched-outline";
-@use "@material/textfield";
-
-@include textfield.core-styles;
-
-$mdc-theme-primary: #4635e2;
-$mdc-theme-on-primary: #fff;
-$mdc-theme-secondary: #262938;
-$mdc-theme-on-secondary: #fff;
-
-.foo-button {
-  @include button.container-fill-color(darksalmon);
-}
+@use '../mdc.min.css' with (
+    $mdc-theme-primary: #4635e3,
+    $mdc-theme-on-primary: #fff,
+    $mdc-theme-secondary: #262938,
+    $mdc-theme-on-secondary: #fff
+);

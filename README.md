@@ -2,13 +2,12 @@
 This is the front-end for the VentilatorProject. It's written in HTML/CSS/JS and uses the [Material Design Web](https://material.io/develop/web) framework.
 
 ## Setup
-To test the website: `npm start` and open [`localhost:8080`](http://localhost:8080)
+To test the website, run `npm start`, which builds the project, then opens `index.html` with the default browser.
+
+To build without opening the project, run `npm build`.
 
 ## Folder structure
 - `css` Stylesheets
-    - `compiled` Compiled Sass stylesheets
-    - `sass` Sass stylesheets
-        - `local` Stylesheets that aren't globally applied
-- `js` JavaScript
-    - `compiled` Compiled ES6
-    - `babel` ES6
+    - `sass` Stylesheets (Sass)
+- `js` JavaScript (ES2015)
+- `build` Compiled Sass and ES2015
