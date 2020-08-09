@@ -8,6 +8,8 @@ To build without opening the project, run `npm build`.
 
 To watch Sass for changes and compile them, run `npm watch-sass`.
 
+To watch Babel for changes and compile them, run `npm watch-js`.
+
 ### Troubleshooting
 If `npm foo` doesn't work, try `npm run foo`.
 
@@ -16,3 +18,6 @@ If `npm foo` doesn't work, try `npm run foo`.
     - `sass` Stylesheets (Sass)
 - `js` JavaScript (ES2015)
 - `build` Compiled Sass and ES2015
+
+## Troubleshooting (Sass)
+Specify paths in Sass relative to the `build` directory.

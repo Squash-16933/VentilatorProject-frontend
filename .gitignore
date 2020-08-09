@@ -114,6 +114,5 @@ dist
 
 
 
-# Compiled Sass and ES6 JavaScript
-css/compiled
-js/compiled
+# Ignore compiled
+build/
