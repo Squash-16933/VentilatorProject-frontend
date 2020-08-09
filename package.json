@@ -6,7 +6,8 @@
   "scripts": {
     "test": "npm start",
     "start": "npm run build & open ./index.html & start ./index.html",
-    "build": "[ -d './build' ] && rm -dr ./build; ./node_modules/.bin/babel ./js -d ./build & sass -s compressed ./css/sass:./build"
+    "build": "[ -d './build' ] && rm -dr ./build; ./node_modules/.bin/babel ./js -d ./build & sass -s compressed ./css/sass:./build",
+    "watch-sass": "sass --watch -s compressed ./css/sass:./build"
   },
   "repository": {
     "type": "git",

@@ -6,6 +6,11 @@ To test the website, run `npm start`, which builds the project, then opens `inde
 
 To build without opening the project, run `npm build`.
 
+To watch Sass for changes and compile them, run `npm watch-sass`.
+
+### Troubleshooting
+If `npm foo` doesn't work, try `npm run foo`.
+
 ## Folder structure
 - `css` Stylesheets
     - `sass` Stylesheets (Sass)

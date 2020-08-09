@@ -1,0 +1,77 @@
+@import url(https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap);
+
+// Configurations
+$color-primary: #4635e2;
+$color-on-primary: #fff;
+$color-secondary: #262938;
+$color-on-secondary: #fff;
+
+@mixin typography-styles-headline1 {
+    font-family: unquote("Inter");
+    font-size: 93;
+}
+@mixin typography-styles-headline2 {
+    font-family: unquote("Inter");
+    font-size: 58;
+}
+@mixin typography-styles-headline3 {
+    font-family: unquote("Inter");
+    font-size: 47;
+}
+@mixin typography-styles-headline4 {
+    font-family: unquote("Inter");
+    font-size: 33;
+}
+@mixin typography-styles-headline5 {
+    font-family: unquote("Inter");
+    font-size: 23;
+}
+@mixin typography-styles-headline6 {
+    font-family: unquote("Inter");
+    font-size: 19;
+}
+@mixin typography-styles-body1 {
+    font-family: unquote("Inter");
+    font-size: 16;
+}
+@mixin typography-styles-body2 {
+    font-family: unquote("Inter");
+    font-size: 14;
+}
+@mixin typography-styles-subtitle1 {
+    font-family: unquote("Inter");
+    font-size: 16;
+}
+@mixin typography-styles-subtitle2 {
+    font-family: unquote("Inter");
+    font-size: 14;
+}
+@mixin typography-styles-button {
+    font-family: unquote("Inter");
+    font-size: 14;
+}
+@mixin typography-styles-overline {
+    font-family: unquote("Inter");
+    font-size: 10;
+}
+@mixin typography-styles-caption {
+    font-family: unquote("Inter");
+    font-size: 12;
+}
+
+h1 {@include typography-styles-headline1}
+h2 {@include typography-styles-headline2}
+h3 {@include typography-styles-headline3}
+h4 {@include typography-styles-headline4}
+h5 {@include typography-styles-headline5}
+h6 {@include typography-styles-headline6}
+body {@include typography-styles-body1}
+.body1 {@include typography-styles-body1}
+.body2 {@include typography-styles-body2}
+.subtitle1 {@include typography-styles-subtitle1}
+.subtitle2 {@include typography-styles-subtitle2}
+button {@include typography-styles-button}
+.button {@include typography-styles-button}
+.overline {@include typography-styles-overline}
+figcaption {@include typography-styles-caption}
+.caption {@include typography-styles-caption}
