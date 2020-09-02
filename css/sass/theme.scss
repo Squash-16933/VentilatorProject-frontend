@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap);
+// Paths are relative to build folder
 
 // Configurations
 $color-primary: #4635e2;
@@ -6,9 +6,22 @@ $color-on-primary: #fff;
 $color-secondary: #262938;
 $color-on-secondary: #fff;
 
+@import url("https://rsms.me/inter/inter.css");
+html {
+    font-family: "Inter", sans-serif;
+}
+@supports (font-variation-settings: normal) {
+    html {
+        font-family: "Inter var", sans-serif;
+    }
+}
+
 @font-face {
-    font-family: "Inter", "Segoe UI", "Helvetica", "Arial", sans-serif;
-    src: url("../css/InterVariable.ttf") format("truetype-variations");
+    font-family: "Roboto";
+    src: url(../fonts/Roboto-Regular.ttf) format("truetype") 400,
+        url(../fonts/Roboto-Italic.ttf) format("truetype") 500 italic,
+        url(../fonts/Roboto-Medium.ttf) format("truetype") 500,
+        url(../fonts/Roboto-MediumItalic.ttf) format("truetype") 500 italic;
 }
 
 @mixin typography-styles-headline1 {
