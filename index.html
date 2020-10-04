@@ -13,20 +13,42 @@
 
     <link href="./build/app.css" rel="stylesheet">
 </head>
-
 <body>
+    <aside class="comp-drawer comp-drawer--modal">
+        <div class="comp-drawer__content">
+            <nav class="comp-list">
+                <a class="comp-list-item comp-list-item--activated" href="#" aria-current="page" tabindex="0">
+                    <span class="comp-list-item__ripple"></span>
+                    <i class="material-icons comp-list-item__graphic" aria-hidden="true">inbox</i>
+                    <span class="comp-list-item__text">Inbox</span>
+                </a>
+                <a class="comp-list-item" href="#">
+                    <span class="comp-list-item__ripple"></span>
+                    <i class="material-icons comp-list-item__graphic" aria-hidden="true">send</i>
+                    <span class="comp-list-item__text">Outgoing</span>
+                </a>
+                <a class="comp-list-item" href="#">
+                    <span class="comp-list-item__ripple"></span>
+                    <i class="material-icons comp-list-item__graphic" aria-hidden="true">drafts</i>
+                    <span class="comp-list-item__text">Drafts</span>
+                </a>
+            </nav>
+        </div>
+    </aside>
+
     <div class="comp-top-app-bar">
-        <h3>Page</h3>
+        <h3>Home</h3>
         <button class="comp-icon-button material-icons">menu</button>
     </div>
 
     <div class="grid">
         <div class="grid-item grid-graph comp-card"></div>
         <div class="grid-item grid-control comp-card">
-            <button class="comp-button">Button</button>
+            <button class="comp-button" id="button-powerOn">Power on</button>
         </div>
     </div>
     <script src="./build/app.js"></script>
+    <script src="./build/websocket.js"></script>
 </body>
 
 </html>

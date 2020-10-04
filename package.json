@@ -6,9 +6,7 @@
   "scripts": {
     "test": "npm start",
     "start": "npm run build & open ./index.html & start ./index.html",
-    "build": "[ -d './build' ] && rm -dr ./build && npx babel ./js -d ./build & sass -s compressed ./css/sass:./build",
-    "watch-sass": "sass --watch -s compressed ./css/sass:./build",
-    "watch-js": "npx babel -w --delete-dir-on-start ./js -d ./build"
+    "build": "[ -d './build' ] && rm -dr ./build && npx babel ./js -d ./build & sass -s compressed ./css/sass:./build"
   },
   "repository": {
     "type": "git",

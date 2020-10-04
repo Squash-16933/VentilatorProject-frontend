@@ -10,7 +10,8 @@ It's based on HTTP ([RFC 7540](https://tools.ietf.org/html/rfc7540)) and JSON ([
 - **Requests** are requests sent from the client to the server. See also: **Request types > Naming convention > Definitions**
 - **Request IDs** or **IDs** are identifying numbers unique for each request of a session. Two different requests should never be sent with the same ID in the same session.
 
-## Client
+## Request format
+### Client
 ```js
 {
     "type": "setPressure",      // Request type
@@ -27,8 +28,8 @@ It's based on HTTP ([RFC 7540](https://tools.ietf.org/html/rfc7540)) and JSON ([
 
 `request`, the request ID, should be 0 when the websocket connects, and then tick upward by one with each request.
 
-### Optimization
-#### Hex
+#### Optimization
+##### Hex
 Still working on a way to include the data in this, and specify the protocol version.
 
 `0f3a2d81916f5e66e800`
@@ -39,12 +40,12 @@ Still working on a way to include the data in this, and specify the protocol ver
 
 \* could be shortened
 
-#### Minified
+##### Minified
 ```json
 ["setPressure",18,14893,1577836800000,{"pressure":100}]
 ```
 
-## Server
+### Server
 ```js
 {
     "request": 14893,          // Request ID to respond to
@@ -54,8 +55,8 @@ Still working on a way to include the data in this, and specify the protocol ver
 }
 ```
 
-### Optimization
-#### Hex
+#### Optimization
+##### Hex
 Still working on a way to include the data in this.
 `3a2d0c801f81a16f5e66e800`
 - `3a 2d` Request ID
@@ -65,7 +66,7 @@ Still working on a way to include the data in this.
 
 \* could be shortened by just eliminating the first 4 digits or so
 
-#### Minified
+##### Minified
 ```json
 [14893,200,129050,1577836800000]
 ```
@@ -76,7 +77,7 @@ Here is a demo communication session:
 // Client connects
 // Client sends request to get pressure
 {
-    "type": "pressure-get",
+    "type": "pressureGet",
     "version": "0.2001.0",
     "request": 0,
     "timestamp": 1577836800000, // Time is 1 Jan 2020, 00:00:00 (Unix 1577836800)
@@ -109,7 +110,7 @@ Here is a demo communication session:
 
 // Client sends request to power off
 {
-    "type": "power-on",
+    "type": "powerOff",
     "version": "0.2001.0",
     "request": 1,
     "timestamp": 1577836810000, // t = 10s

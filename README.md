@@ -6,12 +6,11 @@ To test the website, run `npm start`, which builds the project, then opens `inde
 
 To build without opening the project, run `npm build`.
 
-To watch Sass for changes and compile them, run `npm watch-sass`.
-
-To watch Babel for changes and compile them, run `npm watch-js`.
-
 ### Troubleshooting
 If `npm foo` doesn't work, try `npm run foo`.
+
+## Troubleshooting (Sass)
+Specify paths in Sass relative to the `build` directory.
 
 ## Folder structure
 - `css` Stylesheets
@@ -19,5 +18,7 @@ If `npm foo` doesn't work, try `npm run foo`.
 - `js` JavaScript (ES2015)
 - `build` Compiled Sass and ES2015
 
-## Troubleshooting (Sass)
-Specify paths in Sass relative to the `build` directory.
+## Communication protocol
+The communication protocol resembles a REST API, and the server (Raspberry Pi) communicates with the client (web app) via JSON.
+
+*[Read more](./protocol.md)*
