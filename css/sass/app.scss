@@ -1,3 +1,4 @@
+// Paths are relative to build folder
 @use 'theme';
 
 body {
@@ -20,6 +21,7 @@ body {
     grid-area: graph;
     background: url(../graph.png);
     background-position: center center;
+    width: 50%;
     height: 200px !important;
 }
 
