@@ -54,6 +54,7 @@ Still working on a way to include the data in this, and specify the protocol ver
     "timestamp": 1577836800000 // Unix timestamp (milliseconds)
 }
 ```
+If there was an error or it is responding without reading the message, the server might not send information like the time, data, or request ID.
 
 #### Optimization
 ##### Hex
@@ -71,39 +72,54 @@ Still working on a way to include the data in this.
 [14893,200,129050,1577836800000]
 ```
 
+#### Handshake
+When the server starts, it sends a short OK message to the client.
+```js
+{
+    "status": 200,
+    "timestamp": 1577836800000
+}
+```
+
 ## Examples
 Here is a demo communication session:
 ```js
 // Client connects
+// Server notices connection and responds
+{
+    "status": 200
+    "timestamp": 1577836800000 // Time is 1 Jan 2020, 00:00:00 (Unix 1577836800)
+                               // Let's call it t = 0s
+}
+
 // Client sends request to get pressure
 {
     "type": "pressureGet",
     "version": "0.2001.0",
     "request": 0,
-    "timestamp": 1577836800000, // Time is 1 Jan 2020, 00:00:00 (Unix 1577836800)
-                                // Let's call it t = 0s
+    "timestamp": 1577836801000 // t = 1s
 }
 
 // Server sends continuous response
 {
     "request": 0,
-    "status": 200,              // HTTP-based status code (e.g. 200 OK)
+    "status": 200,             // HTTP-based status code (e.g. 200 OK)
     "data": 129050,
-    "timestamp": 1577836801000  // t = 1s
+    "timestamp": 1577836802000 // t = 2s
 }
 
 {
     "request": 0,
     "status": 200,
     "data": 129120,
-    "timestamp": 1577836801500  // t = 1.5s
+    "timestamp": 1577836802500 // t = 2.5s
 }
 
 {
     "request": 0,
     "status": 200,
     "data": 129120,
-    "timestamp": 1577836802000  // t = 2s
+    "timestamp": 1577836803000 // t = 3s
 }
 
 // ...
@@ -113,14 +129,14 @@ Here is a demo communication session:
     "type": "powerOff",
     "version": "0.2001.0",
     "request": 1,
-    "timestamp": 1577836810000, // t = 10s
+    "timestamp": 1577836810000 // t = 10s
 }
 
 // Server completes request
 {
     "request": 1,
     "status": 200,
-    "timestamp": 1577836811000  // t = 11s
+    "timestamp": 1577836811000 // t = 11s
 }
 ```
 

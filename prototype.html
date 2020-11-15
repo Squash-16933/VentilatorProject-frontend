@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>TEST</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <!-- normalize.css -->
+    <link href="./css/normalize.css" rel="stylesheet">
+
+    <link href="./build/test.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="line1"></div>
+    <div id="line2"></div>
+
+    <h1>Ventilator Project</h1>
+
+    <div class="stats">
+        <div id="pressure">
+            <progress-ring stroke="4635e2" stroke-width="8" radius="100" progress="80"></progress-ring>
+
+            <h2>PRESSURE</h2>
+            <div>31%</div>
+        </div>
+
+        <div id="humidity">
+            <progress-ring stroke="ff0000" stroke-width="8" radius="100" progress="80"></progress-ring>
+
+            <h2>HUMIDITY</h2>
+            <div>41%</div>
+        </div>
+
+        <div id="temperature">
+            <progress-ring stroke="00ff00" stroke-width="8" radius="100" progress="80"></progress-ring>
+
+            <h2>TEMPERATURE</h2>
+            <div>59%</div>
+        </div>
+    </div>
+
+    <script src="build/progress_bar.js"></script>
+</body>
+
+</html>
