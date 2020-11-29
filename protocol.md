@@ -27,7 +27,6 @@ It's based on HTTP ([RFC 7540](https://tools.ietf.org/html/rfc7540)) and JSON ([
 `version` should be equal to the nth version, not the version number. For example, if the third version, `1.2001.0`, was released, it would be specified as `3`, not `1.2001.0`.
 
 `request`, the request ID, should be 0 when the websocket connects, and then tick upward by one with each request.
-
 #### Optimization
 ##### Hex
 Still working on a way to include the data in this, and specify the protocol version.
@@ -158,13 +157,14 @@ Here is a demo communication session:
 - Get request types must have `get` in their name (e.g. `getHumidity` or `getCurrentHumidity` or `humidityGet`)
 
 ### Types
-| Method | Type          | Description                  |
-|--------|---------------|------------------------------|
-| GET    | `getHumidity` | Gets the current humidity    |
-| GET    | `getPressure` | Gets the current pressure    |
-| GET    | `getTemp`     | Gets the current temperature |
-| POST   | `powerOn`     | Turns on the ventilator      |
-| POST   | `powerOff`    | Turns off the ventilator     |
+| Method | Type          | Description                               |
+|--------|---------------|-------------------------------------------|
+| GET    | `getHumidity` | Gets the current humidity                 |
+| GET    | `getPressure` | Gets the current pressure                 |
+| GET    | `getTemp`     | Gets the current temperature              |
+| GET    | `getAll`      | Requests a continuous update of all three |
+| POST   | `powerOn`     | Turns on the ventilator                   |
+| POST   | `powerOff`    | Turns off the ventilator                  |
 
 ## Version numbers
 ![CalVer MAJOR.YY0W.MICRO](https://img.shields.io/badge/calver-MAJOR.YY0W.MICRO-22bfda.svg)
