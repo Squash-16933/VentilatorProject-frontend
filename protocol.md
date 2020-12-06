@@ -20,7 +20,8 @@ It's based on HTTP ([RFC 7540](https://tools.ietf.org/html/rfc7540)) and JSON ([
     "timestamp": 1577836800000, // Unix timestamp
     "data": {                   // Request data
         "pressure": 100
-    }
+    },
+    "flags": {}                 // Request settings
 }
 ```
 
@@ -156,15 +157,84 @@ Here is a demo communication session:
 - Request types are named in camelCase, starting with a lowercase letter (e.g. `getHumidity`)
 - Get request types must have `get` in their name (e.g. `getHumidity` or `getCurrentHumidity` or `humidityGet`)
 
-### Types
-| Method | Type          | Description                               |
-|--------|---------------|-------------------------------------------|
-| GET    | `getHumidity` | Gets the current humidity                 |
-| GET    | `getPressure` | Gets the current pressure                 |
-| GET    | `getTemp`     | Gets the current temperature              |
-| GET    | `getAll`      | Requests a continuous update of all three |
-| POST   | `powerOn`     | Turns on the ventilator                   |
-| POST   | `powerOff`    | Turns off the ventilator                  |
+## Documentation
+### `getHumidity` - GET
+Gets the current humidity.
+
+#### Flags
+- `continuous`
+    
+    **Defaults to `true`**
+
+    When enabled, the server will send an update every 500ms.
+
+#### Response
+```js
+{
+    "data": 1048575 // Unsigned 20-bit number
+}
+```
+
+### `getPressure` - GET
+Gets the current pressure.
+
+#### Flags
+- `continuous`
+    
+    **Defaults to `true`**
+
+    When enabled, the server will send an update every 500ms.
+
+#### Response
+```js
+{
+    "data": 1048575 // Unsigned 20-bit number
+}
+```
+
+### `getTemp` - GET
+Gets the current temperature.
+
+#### Flags
+- `continuous`
+    
+    **Defaults to `true`**
+
+    When enabled, the server will send an update every 500ms.
+
+#### Response
+```js
+{
+    "data": 65535 // Unsigned 16-bit number
+}
+```
+
+### `getAll` - GET
+Requests a continuous update of all three.
+
+#### Flags
+- `continuous`
+    
+    **Defaults to `true`**
+
+    When enabled, the server will send an update every 500ms.
+
+#### Response
+```js
+{
+    "data": {
+        "humidity": 1048575, // Unsigned 20-bit number for humidity
+        "pressure": 1048575, // Unsigned 20-bit number for pressute
+        "temperature": 65535 // Unsigned 16-bit number for temperature
+    }
+}
+```
+
+### `powerOn` - POST
+Turns on the ventilator.
+
+### `powerOff` - POST
+Turns off the ventilator.
 
 ## Version numbers
 ![CalVer MAJOR.YY0W.MICRO](https://img.shields.io/badge/calver-MAJOR.YY0W.MICRO-22bfda.svg)
