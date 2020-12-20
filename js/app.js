@@ -25,7 +25,7 @@ class Protocol {
      * This listener triggers in response to the server sending its first message.
      */
     onReady() {
-        protocol.send('powerOn')
+        protocol.send('getAll')
     }
 
     /**
@@ -41,7 +41,7 @@ class Protocol {
 
             if (!this.ready) {
                 this.ready = true
-                protocol.send('powerOn') // TODO Replace with this.onReady()
+                protocol.send('getAll') // TODO Replace with this.onReady()
             }
         } catch (e) { // If it's not in JSON format
             if (e instanceof SyntaxError) {
