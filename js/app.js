@@ -1,3 +1,13 @@
+function handleGetAll(data) {
+    var humidity = document.querySelector('#humidity .stat')
+    humidity.textContent = data.data.humidity
+
+    var pressure = document.querySelector('#pressure .stat')
+    pressure.textContent = data.data.pressure
+    
+    var temperature = document.querySelector('#temperature .stat')
+    temperature.textContent = data.data.temperature
+}
 class Protocol {
     /**
      * Sends a request to the Pi.
@@ -12,6 +22,7 @@ class Protocol {
             timestamp: Math.floor(new Date().getTime()),
             data
         }
+        this.requests.push(msg)
 
         this.socket.send(JSON.stringify(msg))
         this.request++
@@ -39,6 +50,25 @@ class Protocol {
             console.log(data)
             console.log()
 
+            // TODO Improve by corresponding request num to start search index
+            // Possibly search backwards?
+
+            var corr
+
+            // Search for corresponding request for recieved data
+            for (var i = 0; i < this.requests.length; i++) {
+                if (this.requests[i].request == data.request) {
+                    corr = this.requests[i].request
+                }
+            }
+
+            // TODO make this handle more request types
+            switch (corr.type) {
+                case 'getAll':
+                    handleGetAll(data)
+                    break
+            }
+
             if (!this.ready) {
                 this.ready = true
                 protocol.send('getAll') // TODO Replace with this.onReady()
@@ -52,9 +82,11 @@ class Protocol {
 
     constructor() {
         this.version = '-1'
-        this.socket  = new WebSocket('ws://localhost:3001');
+        this.socket  = new WebSocket('ws://172.114.130.141:5000/socketserver');
         this.request = 0
         this.ready   = false // True if ready for sending messages
+
+        this.requests = []
 
         this.socket.onmessage = this.onRecieve
     }
