@@ -1,18 +1,19 @@
 class Handler {
     static h_getAll(response) {
         var humidity = document.querySelector('#humidity .stat')
-        humidity.textContent = Math.round(response.data.humidity/10485.75)+'%'
+        humidity.innerHTML = Math.round(response.data.humidity/1024)+'<div class="stat-unit">%</div>'
 
         var pressure = document.querySelector('#pressure .stat')
-        pressure.textContent = Math.round(response.data.pressure/10485.75)+'%'
+        pressure.innerHTML = Math.round(response.data.pressure/256)+'<div class="stat-unit">Pa</div>'
 
         var temperature = document.querySelector('#temperature .stat')
-        temperature.textContent = Math.round(response.data.temperature/655.35)+'%'
+        temperature.innerHTML = Math.round(response.data.temperature/100)+'<div class="stat-unit">°C</div>'
     }
 }
 class Protocol {
     constructor() {
-        this.socket = new WebSocket('ws://localhost:5001'); // TODO connect this to pi instead
+        // this.socket = new WebSocket('ws://localhost:3001');
+        this.socket = new WebSocket('ws://172.114.130.141:5000/socketserver');
         this.request = 0
         this.ready = false // True if ready for sending messages
 
