@@ -1,10 +1,34 @@
+class Handler {
+    static h_getAll(response) {
+        var humidity = document.querySelector('#humidity .stat')
+        humidity.innerHTML = Math.round(response.data.humidity/1024)+'<div class="stat-unit">%</div>'
+
+        var pressure = document.querySelector('#pressure .stat')
+        pressure.innerHTML = Math.round(response.data.pressure/256)+'<div class="stat-unit">Pa</div>'
+
+        var temperature = document.querySelector('#temperature .stat')
+        temperature.innerHTML = Math.round(response.data.temperature/100)+'<div class="stat-unit">°C</div>'
+    }
+}
 class Protocol {
+    constructor() {
+        // this.socket = new WebSocket('ws://localhost:3001');
+        this.socket = new WebSocket('ws://172.114.130.141:5000/socketserver');
+        this.request = 0
+        this.ready = false // True if ready for sending messages
+
+        this.version = '-1'
+        this.requests = []
+
+        this.socket.onmessage = (event) => this.onRecieve(event)
+    }
+
     /**
      * Sends a request to the Pi.
      * @param {String} type Message type
      * @param {*} [data] Data to send (if there is data)
      */
-    send(type, data=null) { // Should I make this asynchronous?
+    send(type, data = null) { // Should I make this asynchronous?
         var msg = {
             type,
             version: this.version,
@@ -12,6 +36,7 @@ class Protocol {
             timestamp: Math.floor(new Date().getTime()),
             data
         }
+        this.requests.push(msg)
 
         this.socket.send(JSON.stringify(msg))
         this.request++
@@ -25,7 +50,7 @@ class Protocol {
      * This listener triggers in response to the server sending its first message.
      */
     onReady() {
-        protocol.send('powerOn')
+        this.send('getAll')
     }
 
     /**
@@ -39,24 +64,39 @@ class Protocol {
             console.log(data)
             console.log()
 
+            // Check if message is a response to a request
+            if (data.request != undefined) {
+                // TODO Improve by corresponding request num to start search index
+                // Possibly search backwards?
+
+                var corr
+
+                // Search for corresponding request for recieved data
+                for (var i = 0; i < this.requests.length; i++) {
+                    if (this.requests[i].request == data.request) {
+                        corr = this.requests[i]
+                    }
+                }
+
+                // TODO make this handle more request types
+                switch (corr.type) {
+                    case 'getAll':
+                        Handler.h_getAll(JSON.parse(event.data))
+                        break
+                }
+            }
+
+            // If server has not sent message before
             if (!this.ready) {
                 this.ready = true
-                protocol.send('powerOn') // TODO Replace with this.onReady()
+                this.onReady()
             }
         } catch (e) { // If it's not in JSON format
             if (e instanceof SyntaxError) {
-                console.log(event.data)
+                console.error('Error parsing JSON')
+                console.error(event.data)
             } else throw e
         }
-    }
-
-    constructor() {
-        this.version = '-1'
-        this.socket  = new WebSocket('ws://localhost:3001');
-        this.request = 0
-        this.ready   = false // True if ready for sending messages
-
-        this.socket.onmessage = this.onRecieve
     }
 }
 

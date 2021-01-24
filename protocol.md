@@ -20,6 +20,10 @@ It's based on HTTP ([RFC 7540](https://tools.ietf.org/html/rfc7540)) and JSON ([
     "timestamp": 1577836800000, // Unix timestamp
     "data": {                   // Request data
         "pressure": 100
+    },
+    "note": "Fragile",          // Note about request (optional)
+    "flags": {                  // Request preferences
+        "continuous": true
     }
 }
 ```
@@ -28,20 +32,8 @@ It's based on HTTP ([RFC 7540](https://tools.ietf.org/html/rfc7540)) and JSON ([
 
 `request`, the request ID, should be 0 when the websocket connects, and then tick upward by one with each request.
 #### Optimization
-##### Hex
-Still working on a way to include the data in this, and specify the protocol version.
-
-`0f3a2d81916f5e66e800`
-- `0f` Protocol version
-- `3a 2d` Request ID
-- `81 9` Request type
-- `16 f5 e6 6e 80 0` Unix timestamp*
-
-\* could be shortened
-
-##### Minified
 ```json
-["setPressure",18,14893,1577836800000,{"pressure":100}]
+["setPressure",15,14893,1577836800000,{"pressure":100},"Fragile",{"continuous":true}]
 ```
 
 ### Server
@@ -50,25 +42,15 @@ Still working on a way to include the data in this, and specify the protocol ver
     "request": 14893,          // Request ID to respond to
     "status": 200,             // HTTP-based status code (e.g. 200 OK)
     "data": 129050,            // Data from sensor (if data was requested)
+    "note": "Do not eat",      // Note about request (optional)
     "timestamp": 1577836800000 // Unix timestamp (milliseconds)
 }
 ```
 If there was an error or it is responding without reading the message, the server might not send information like the time, data, or request ID.
 
 #### Optimization
-##### Hex
-Still working on a way to include the data in this.
-`3a2d0c801f81a16f5e66e800`
-- `3a 2d` Request ID
-- `0c 8` HTTP-based status code
-- `01 f8 1a` Data from sensor
-- `16 f5 e6 6e 80 0` Unix timestamp*
-
-\* could be shortened by just eliminating the first 4 digits or so
-
-##### Minified
 ```json
-[14893,200,129050,1577836800000]
+[14893,200,129050,"Do not eat",1577836800000]
 ```
 
 #### Handshake
@@ -156,15 +138,84 @@ Here is a demo communication session:
 - Request types are named in camelCase, starting with a lowercase letter (e.g. `getHumidity`)
 - Get request types must have `get` in their name (e.g. `getHumidity` or `getCurrentHumidity` or `humidityGet`)
 
-### Types
-| Method | Type          | Description                               |
-|--------|---------------|-------------------------------------------|
-| GET    | `getHumidity` | Gets the current humidity                 |
-| GET    | `getPressure` | Gets the current pressure                 |
-| GET    | `getTemp`     | Gets the current temperature              |
-| GET    | `getAll`      | Requests a continuous update of all three |
-| POST   | `powerOn`     | Turns on the ventilator                   |
-| POST   | `powerOff`    | Turns off the ventilator                  |
+## Documentation
+### `getHumidity` - GET
+Gets the current humidity.
+
+#### Flags
+- `continuous`
+    
+    **Defaults to `false`**
+
+    When enabled, the server will send an update every 500ms.
+
+#### Response
+```js
+{
+    "data": 1048575 // Unsigned number
+}
+```
+
+### `getPressure` - GET
+Gets the current pressure.
+
+#### Flags
+- `continuous`
+    
+    **Defaults to `false`**
+
+    When enabled, the server will send an update every 500ms.
+
+#### Response
+```js
+{
+    "data": 1048575 // Unsigned number
+}
+```
+
+### `getTemp` - GET
+Gets the current temperature.
+
+#### Flags
+- `continuous`
+    
+    **Defaults to `false`**
+
+    When enabled, the server will send an update every 500ms.
+
+#### Response
+```js
+{
+    "data": 65535 // Unsigned number
+}
+```
+
+### `getAll` - GET
+Requests a continuous update of all three.
+
+#### Flags
+- `continuous`
+    
+    **Defaults to `false`**
+
+    When enabled, the server will send an update every 500ms.
+
+#### Response
+```js
+{
+    "data": {
+        "humidity": 1048575, // Unsigned number for humidity
+        "pressure": 1048575, // Unsigned number for pressute
+        "temperature": 65535 // Unsigned number for temperature
+    }
+}
+```
+
+### `powerOn` - POST
+Turns on the ventilator.
+
+### `powerOff` - POST
+Turns off the ventilator.
 
 ## Version numbers
 ![CalVer MAJOR.YY0W.MICRO](https://img.shields.io/badge/calver-MAJOR.YY0W.MICRO-22bfda.svg)

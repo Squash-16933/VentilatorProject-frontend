@@ -4,50 +4,45 @@
 <head>
     <title>Ventilator | Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
     <!-- normalize.css -->
     <link href="./css/normalize.css" rel="stylesheet">
 
-    <!-- Import Material icons -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
     <link href="./build/app.css" rel="stylesheet">
+
+    <link rel='icon' href='./assets/favicon.png' type='image/png' />
 </head>
+
 <body>
-    <aside class="comp-drawer comp-drawer--modal">
-        <div class="comp-drawer__content">
-            <nav class="comp-list">
-                <a class="comp-list-item comp-list-item--activated" href="#" aria-current="page" tabindex="0">
-                    <span class="comp-list-item__ripple"></span>
-                    <i class="material-icons comp-list-item__graphic" aria-hidden="true">inbox</i>
-                    <span class="comp-list-item__text">Inbox</span>
-                </a>
-                <a class="comp-list-item" href="#">
-                    <span class="comp-list-item__ripple"></span>
-                    <i class="material-icons comp-list-item__graphic" aria-hidden="true">send</i>
-                    <span class="comp-list-item__text">Outgoing</span>
-                </a>
-                <a class="comp-list-item" href="#">
-                    <span class="comp-list-item__ripple"></span>
-                    <i class="material-icons comp-list-item__graphic" aria-hidden="true">drafts</i>
-                    <span class="comp-list-item__text">Drafts</span>
-                </a>
-            </nav>
+    <div id="line1"></div>
+    <div id="line2"></div>
+
+    <h1>Ventilator Project</h1>
+
+    <div class="stats">
+        <div id="humidity" class="stat-block">
+            <progress-ring stroke="ff0000" stroke-width="8" radius="100" progress="80"></progress-ring>
+
+            <h2>HUMIDITY</h2>
+            <div class="stat">...</div>
         </div>
-    </aside>
+        
+        <div id="pressure" class="stat-block">
+            <progress-ring stroke="4635e2" stroke-width="8" radius="100" progress="80"></progress-ring>
 
-    <div class="comp-top-app-bar">
-        <h3>Home</h3>
-        <button class="comp-icon-button material-icons">menu</button>
-    </div>
+            <h2>PRESSURE</h2>
+            <div class="stat">...</div>
+        </div>
 
-    <div class="grid">
-        <div class="grid-item grid-graph comp-card"></div>
-        <div class="grid-item grid-control comp-card">
-            <button class="comp-button" id="button-powerOn">Power on</button>
+        <div id="temperature" class="stat-block">
+            <progress-ring stroke="00ff00" stroke-width="8" radius="100" progress="80"></progress-ring>
+
+            <h2>TEMPERATURE</h2>
+            <div class="stat">...</div>
         </div>
     </div>
+
     <script src="./build/app.js"></script>
 </body>
 
