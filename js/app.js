@@ -12,8 +12,8 @@ class Handler {
 }
 class Protocol {
     constructor() {
-        // this.socket = new WebSocket('ws://localhost:3001');
-        this.socket = new WebSocket('ws://172.114.130.141:5000/socketserver');
+        this.socket = new WebSocket('ws://localhost:5001');
+        // this.socket = new WebSocket('ws://172.114.130.141:5000/socketserver');
         this.request = 0
         this.ready = false // True if ready for sending messages
 
@@ -28,13 +28,14 @@ class Protocol {
      * @param {String} type Message type
      * @param {*} [data] Data to send (if there is data)
      */
-    send(type, data = null) { // Should I make this asynchronous?
+    send(type, data = null, flags = null) { // Should I make this asynchronous?
         var msg = {
             type,
             version: this.version,
             request: this.request,
             timestamp: Math.floor(new Date().getTime()),
-            data
+            data,
+            flags
         }
         this.requests.push(msg)
 
