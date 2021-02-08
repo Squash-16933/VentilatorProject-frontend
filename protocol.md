@@ -138,11 +138,11 @@ Here is a demo communication session:
 - Request types are named in camelCase, starting with a lowercase letter (e.g. `getHumidity`)
 - Get request types must have `get` in their name (e.g. `getHumidity` or `getCurrentHumidity` or `humidityGet`)
 
-## Documentation
+## Message types
 ### `getHumidity` - GET
 Gets the current humidity.
 
-#### Flags
+#### `flags`
 - `continuous`
     
     **Defaults to `false`**
@@ -159,7 +159,7 @@ Gets the current humidity.
 ### `getPressure` - GET
 Gets the current pressure.
 
-#### Flags
+#### `flags`
 - `continuous`
     
     **Defaults to `false`**
@@ -176,7 +176,7 @@ Gets the current pressure.
 ### `getTemp` - GET
 Gets the current temperature.
 
-#### Flags
+#### `flags`
 - `continuous`
     
     **Defaults to `false`**
@@ -193,7 +193,7 @@ Gets the current temperature.
 ### `getAll` - GET
 Requests a continuous update of all three.
 
-#### Flags
+#### `flags`
 - `continuous`
     
     **Defaults to `false`**
@@ -211,11 +211,15 @@ Requests a continuous update of all three.
 }
 ```
 
-### `powerOn` - POST
-Turns on the ventilator.
+### `setProfile` - POST
+Sets the patient's settings. The patient's settings are used to configure the ventilator.
 
-### `powerOff` - POST
-Turns off the ventilator.
+#### `data`
+- `minTidalVolume` The minimum tidal volume (mL).
+- `maxTidalVolume` The maximum tidal volume (mL).
+- `breathRate` The breath rate (breaths per minute).
+- `ieRatio` The I:E ratio.
+- `ventMode` The ventilator mode.
 
 ## Version numbers
 ![CalVer MAJOR.YY0W.MICRO](https://img.shields.io/badge/calver-MAJOR.YY0W.MICRO-22bfda.svg)
