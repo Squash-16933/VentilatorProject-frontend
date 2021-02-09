@@ -215,8 +215,8 @@ Requests a continuous update of all three.
 Sets the patient's settings. The patient's settings are used to configure the ventilator.
 
 #### `data`
-- `minTidalVolume` The minimum tidal volume (mL).
-- `maxTidalVolume` The maximum tidal volume (mL).
+- `minTidal` The minimum tidal volume (mL).
+- `maxTidal` The maximum tidal volume (mL).
 - `breathRate` The breath rate (breaths per minute).
 - `ieRatio` The I:E ratio.
 - `ventMode` The ventilator mode.
