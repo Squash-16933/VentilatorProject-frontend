@@ -5,8 +5,9 @@
   "main": "",
   "scripts": {
     "test": "npm start",
-    "start": "npm run build & open ./index.html & start ./index.html",
-    "build": "[ -d './build' ] && rm -dr ./build && npx babel ./js -d ./build & sass -s compressed ./css/sass:./build"
+    "start": "npm run build & npm run open",
+    "build": "[ -d './build' ] && rm -dr ./build && npx babel ./js -d ./build & sass -s compressed ./css/sass:./build",
+    "open": "open ./index.html & start ./index.html"
   },
   "repository": {
     "type": "git",

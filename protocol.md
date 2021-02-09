@@ -215,11 +215,12 @@ Requests a continuous update of all three.
 Sets the patient's settings. The patient's settings are used to configure the ventilator.
 
 #### `data`
-- `minTidal` The minimum tidal volume (mL).
-- `maxTidal` The maximum tidal volume (mL).
-- `breathRate` The breath rate (breaths per minute).
-- `ieRatio` The I:E ratio.
-- `ventMode` The ventilator mode.
+*Optional*
+- `age` Patient's age (years)
+- `height` Patient's height (in)
+- `weight` Patient's weight (lb)
+- `gender` Patient's biological sex (`male` or `female`) (no way to handle intersex yet)
+- *`disease`* Patient's disease, if applicable
 
 ## Version numbers
 ![CalVer MAJOR.YY0W.MICRO](https://img.shields.io/badge/calver-MAJOR.YY0W.MICRO-22bfda.svg)

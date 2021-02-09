@@ -7,10 +7,8 @@ This is the front-end for the VentilatorProject. It's written in HTML/Sass/ES6.
 3. To test the website, run `npm start`, which builds the project, then opens `index.html` with the default browser.
 
 ### Other commands
-To build without opening the project, run `npm build`.
-
-### Troubleshooting
-If `npm foo` doesn't work, try `npm run foo`.
+- `npm run build`: Builds the project without opening.
+- `npm run open`: Opens the project without building.
 
 ## Troubleshooting (Sass)
 Specify paths in Sass relative to the `build` directory.
