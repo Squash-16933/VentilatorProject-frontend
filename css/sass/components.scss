@@ -20,7 +20,7 @@ input::-webkit-inner-spin-button {
 // Firefox
 input {
     width: 100px;
-    background-color: $color-input;
+    background: $color-input;
     color: $color-on-input;
 
     border: transparent 2px solid;
@@ -75,5 +75,5 @@ select {
 }
 
 option {
-    background-color: $color-input;
+    background-color: $color-bg;
 }
