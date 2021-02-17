@@ -1,19 +1,32 @@
-$color-primary: #4635e2;
-$color-on-primary: #fff;
-$color-secondary: #262938;
-$color-on-secondary: #fff;
+@import "theme";
+
+$color-title-shadow-90-dark: #ffffff1a;
+$color-title-shadow-90-light: #0000001a;
+$color-title-shadow-dark: #ffffff34;
+$color-title-shadow-light: #00000034;
+
+$color-stats-stat-dark: #ffffffb0;
+$color-stats-stat-light: #000000b0;
+$color-stats-stat-unit-dark: #ffffffb0;
+$color-stats-stat-unit-light: #000000b0;
+
+$color-title-shadow-90: $color-title-shadow-90-dark;
+$color-title-shadow: $color-title-shadow-dark;
+$color-stats-stat: $color-stats-stat-dark;
+$color-stats-stat-unit: $color-stats-stat-unit-dark;
+
+@if $theme == 1 {
+    $color-title-shadow-90: $color-title-shadow-90-light;
+    $color-title-shadow: $color-title-shadow-light;
+    $color-stats-stat: $color-stats-stat-light;
+    $color-stats-stat-unit: $color-stats-stat-unit-light;
+}
 
 // Transition times
-$line-expand-transition: 800ms;
-$title-flickerin-transition: 500ms;
-$controls-profile-height-unit-transition: 1s; // When changing this, update app.js: height_unit_changeUnit()
-$display-transition: 800ms;
-$input-fade-transition: 200ms; // When updating this, also update theme.scss
-
-body {
-    background-color: #000;
-    color: #fff;
-}
+$transition-line-expand: 800ms;
+$transition-title-flickerin: 500ms;
+$transition-controls-profile-height-unit: 1s; // When changing this, update app.js: height_unit_changeUnit()
+$transition-display: 800ms;
 
 #title {
     top: 10%;
@@ -23,8 +36,8 @@ body {
     opacity: 0;
 
     animation-name: title-flickerin;
-    animation-duration: $title-flickerin-transition;
-    animation-delay: $line-expand-transition;
+    animation-duration: $transition-title-flickerin;
+    animation-delay: $transition-line-expand;
     animation-fill-mode: forwards;
 }
 
@@ -41,6 +54,7 @@ body {
     width: 2px;
 
     animation-name: line-expandy;
+    box-shadow: inherit 1px inherit;
 }
 
 #line-right {
@@ -49,14 +63,15 @@ body {
     width: 2px;
 
     animation-name: line-expandy;
+    box-shadow: inherit 1px inherit inherit;
 }
 
 .line {
     position: absolute;
     background-color: $color-primary;
-    box-shadow: 0 0 2px $color-primary;
+    @if $theme == 0 {box-shadow: 0 0 2px $color-primary;}
 
-    animation-duration: $line-expand-transition;
+    animation-duration: $transition-line-expand;
     animation-timing-function: ease-out;
     animation-fill-mode: forwards;
 }
@@ -84,8 +99,8 @@ body {
     text-align: center;
 
     animation-name: fadein;
-    animation-duration: $display-transition;
-    animation-delay: $line-expand-transition + $title-flickerin-transition;
+    animation-duration: $transition-display;
+    animation-delay: $transition-line-expand + $transition-title-flickerin;
     animation-fill-mode: forwards;
 }
 
@@ -93,7 +108,7 @@ body {
     font-weight: 500;
     font-size: 1em;
 
-    color: #ffffffb0;
+    color: $color-stats-stat;
 }
 
 .stats > div {
@@ -106,7 +121,7 @@ body {
 
 .stats .stat-unit {
     font-size: 0.5em;
-    color: #ffffffb0;
+    color: $color-stats-stat-unit;
     display: inline;
 
     margin-left: 5px;
@@ -137,8 +152,8 @@ body {
     text-align: center;
 
     animation-name: fadein;
-    animation-duration: $display-transition;
-    animation-delay: $title-flickerin-transition + $line-expand-transition;
+    animation-duration: $transition-display;
+    animation-delay: $transition-title-flickerin + $transition-line-expand;
     animation-fill-mode: forwards;
 }
 
@@ -148,7 +163,7 @@ body {
 }
 
 .active {
-    animation: fadein $input-fade-transition;
+    animation: fadein $transition-input-fade;
 }
 
 #controls-profile-disease {
@@ -204,12 +219,12 @@ body {
 
     90% {
         opacity: 1;
-        text-shadow: 0 0 10px rgba(#fff, 0.1);
+        text-shadow: 0 0 10px $color-title-shadow-90;
     }
 
     100% {
         opacity: 1;
-        text-shadow: 0 0 10px rgba(#fff, 0.2);
+        text-shadow: 0 0 10px $color-title-shadow;
     }
 }
 

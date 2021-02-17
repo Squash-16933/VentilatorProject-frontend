@@ -7,8 +7,50 @@ $color-on-primary: #fff;
 $color-secondary: #262938;
 $color-on-secondary: #fff;
 
+$theme: 1; // 0: dark, 1: light
+
+$color-bg-dark: #000;
+$color-bg-light: #fff;
+$color-on-bg-dark: #fff;
+$color-on-bg-light: #000;
+
+$color-input-dark: #ffffff20;
+$color-input-light: #00000010;
+$color-input-placeholder-dark: #ffffffb0;
+$color-input-placeholder-light: #000000b0;
+$color-on-input-dark: #fff;
+$color-on-input-light: #000;
+
+$color-input-error-dark: #f55;
+$color-input-error-light: #f11;
+$color-input-error-focus-dark: #faa;
+$color-input-error-focus-light: #f66;
+
+$color-bg: $color-bg-dark;
+$color-on-bg: $color-on-bg-dark;
+$color-input: $color-input-dark;
+$color-input-placeholder: $color-input-placeholder-dark;
+$color-on-input: $color-on-input-dark;
+$color-input-error: $color-input-error-dark;
+$color-input-error-focus: $color-input-error-focus-dark;
+
+@if $theme == 1 {
+    $color-bg: $color-bg-light;
+    $color-on-bg: $color-on-bg-light;
+    $color-input: $color-input-light;
+    $color-input-placeholder: $color-input-placeholder-light;
+    $color-on-input: $color-on-input-light;
+    $color-input-error: $color-input-error-light;
+    $color-input-error-focus: $color-input-error-focus-light;
+}
+
+body {
+    background-color: $color-bg;
+    color: $color-on-bg;
+}
+
 // Transition times
-$input-fade-transition: 200ms;
+$transition-input-fade: 200ms;
 
 @import url(https://rsms.me/inter/inter.css);
 html {
@@ -156,28 +198,28 @@ input::-webkit-inner-spin-button {
 // Firefox
 input {
     width: 100px;
-    background-color: #ffffff20;
-    color: #fff;
+    background-color: $color-input;
+    color: $color-on-input;
 
     border: transparent 2px solid;
     border-radius: 5px;
     padding: 5px;
     box-sizing: border-box;
 
-    transition: border $input-fade-transition;
+    transition: border $transition-input-fade;
 
     &:focus {
         outline: none;
-        border: #fff 2px solid;
+        border: $color-on-input 2px solid;
     }
 
     &:invalid {
         box-shadow: none;
-        border: #f55 2px solid;
+        border: $color-input-error 2px solid;
     }
 
     &:invalid:focus {
-        border: #faa 2px solid;
+        border: $color-input-error-focus 2px solid;
     }
 
     &[type="number"] {
@@ -186,18 +228,18 @@ input {
 }
 
 input::placeholder {
-    color: #ffffffb0;
+    color: $color-input-placeholder;
     padding: 5px;
 }
 
 /* Selects */
 
 select {
-    background-color: #ffffff20;
-    color: #fff;
+    background-color: $color-input;
+    color: $color-on-input;
     border: transparent 2px solid;
 
-    transition: border $input-fade-transition;
+    transition: border $transition-input-fade;
 
     border-radius: 5px;
     padding: 5px;
@@ -206,10 +248,10 @@ select {
 
     &:focus {
         outline: none;
-        border: #fff 2px solid;
+        border: $color-on-input 2px solid;
     }
 }
 
 option {
-    background-color: #000;
+    background-color: $color-input;
 }
