@@ -14,10 +14,25 @@ This is the front-end for the VentilatorProject. It's written in HTML/Sass/ES6.
 Specify paths in Sass relative to the `build` directory.
 
 ## Folder structure
-- `css` Stylesheets
-    - `sass` Stylesheets (Sass)
-- `js` JavaScript (ES6)
-- `build` Compiled Sass and ES6
+- **`assets`** Image resources
+- **`build`** Compiled Sass and ES6
+- **`css`** Stylesheets
+    - **`fonts`** Font resources
+    - **`sass`** Stylesheets (Sass)
+      - `app.scss` Styles for `/index.html`
+      - `components.scss` UI components
+      - `typography.scss` Typography
+      - `vars.scss` Global variables
+    - `normalize.css` Normalizing styles for browsers
+- **`js`** JavaScript (ES6)
+    - `app.js` Scripts for `/index.html`
+    - `protocol.js` Communication protocol
+- `.babelrc` Babel config file
+- `.gitignore` gitignore
+- `index.html` Main page
+- `package.json` NPM package.json file
+- `NOTICE.md` Gives credit to various sources
+- `README.md` This file, the README
 
 ## Communication protocol
 The communication protocol resembles a REST API, and the server (Raspberry Pi) communicates with the client (web app) via JSON.
