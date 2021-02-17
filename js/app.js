@@ -1,12 +1,12 @@
 class Handler {
     static h_getAll(response) {
-        var humidity = document.querySelector('#humidity .stat')
+        var humidity = document.querySelector('#stats-humidity .stat')
         humidity.innerHTML = Math.round(response.data.humidity/1024)+'<div class="stat-unit">%</div>'
 
-        var pressure = document.querySelector('#pressure .stat')
+        var pressure = document.querySelector('#stats-pressure .stat')
         pressure.innerHTML = Math.round(response.data.pressure/256)+'<div class="stat-unit">Pa</div>'
 
-        var temperature = document.querySelector('#temperature .stat')
+        var temperature = document.querySelector('#stats-temperature .stat')
         temperature.innerHTML = Math.round(response.data.temperature/100)+'<div class="stat-unit">°C</div>'
     }
 }
@@ -102,3 +102,48 @@ class Protocol {
 }
 
 var protocol = new Protocol()
+
+/* Handlers */
+function height_unit_changeUnit() {
+    var value = document.querySelector('#controls-profile-height-unit').value
+    var active
+    var inactive
+
+    if (value == 'ft') {
+        active = document.querySelector('#controls-profile-height-ft')
+        inactive = document.querySelector('#controls-profile-height-cm')
+    } else if (value == 'cm') {
+        active = document.querySelector('#controls-profile-height-cm')
+        inactive = document.querySelector('#controls-profile-height-ft')
+    }
+
+    // Hide unnecessary input, show necessary one
+    inactive.classList.add('inactive')
+    
+    active.classList.add('active')
+    active.classList.remove('inactive')
+
+    inactive.classList.remove('active')
+}
+
+
+function weight_unit_changeUnit() {
+    var value = document.querySelector('#controls-profile-weight-unit').value
+    var element = document.querySelector('#controls-profile-weight')
+
+    switch (value) {
+        case 'lb': // Note: do not confuse lb and lbs
+            element.setAttribute('placeholder', 'lbs')
+            break
+        case 'kg':
+            element.setAttribute('placeholder', 'kg')
+            break
+        case 'st':
+            element.setAttribute('placeholder', 'st')
+            break
+    }
+}
+
+function controls_profile_submit() {
+    // to do - add this
+}

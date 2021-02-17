@@ -1,12 +1,16 @@
 // Paths are relative to build folder
 
-// Configurations
+// Configurations: When updating this, also update app.scss
+// Colors
 $color-primary: #4635e2;
 $color-on-primary: #fff;
 $color-secondary: #262938;
 $color-on-secondary: #fff;
 
-@import url("https://rsms.me/inter/inter.css");
+// Transition times
+$input-fade-transition: 200ms;
+
+@import url(https://rsms.me/inter/inter.css);
 html {
     font-family: "Inter", sans-serif;
 }
@@ -135,4 +139,77 @@ figcaption {
 }
 .caption {
     @include typography-styles-caption;
+}
+
+// Styles for elements
+
+// Inputs
+
+// Hides arrows on number inputs
+// Chrome, Safari, Edge, Opera
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+// Firefox
+input {
+    width: 100px;
+    background-color: #ffffff20;
+    color: #fff;
+
+    border: transparent 2px solid;
+    border-radius: 5px;
+    padding: 5px;
+    box-sizing: border-box;
+
+    transition: border $input-fade-transition;
+
+    &:focus {
+        outline: none;
+        border: #fff 2px solid;
+    }
+
+    &:invalid {
+        box-shadow: none;
+        border: #f55 2px solid;
+    }
+
+    &:invalid:focus {
+        border: #faa 2px solid;
+    }
+
+    &[type="number"] {
+        -moz-appearance: textfield;
+    }
+}
+
+input::placeholder {
+    color: #ffffffb0;
+    padding: 5px;
+}
+
+/* Selects */
+
+select {
+    background-color: #ffffff20;
+    color: #fff;
+    border: transparent 2px solid;
+
+    transition: border $input-fade-transition;
+
+    border-radius: 5px;
+    padding: 5px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+
+    &:focus {
+        outline: none;
+        border: #fff 2px solid;
+    }
+}
+
+option {
+    background-color: #000;
 }

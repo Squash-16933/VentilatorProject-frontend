@@ -6,41 +6,99 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-    <!-- normalize.css -->
     <link href="./css/normalize.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <link href="./build/app.css" rel="stylesheet">
+    <link href="./build/theme.css" rel="stylesheet">
 
     <link rel='icon' href='./assets/favicon.png' type='image/png' />
 </head>
 
 <body>
-    <div id="line1"></div>
-    <div id="line2"></div>
+    <div id="line-top" class="line"></div>
+    <div id="line-left" class="line"></div>
+    <div id="line-right" class="line"></div>
 
-    <h1>Ventilator Project</h1>
+    <h1 id="title">Ventilator Project</h1>
 
     <div class="stats">
-        <div id="humidity" class="stat-block">
+        <div id="stats-humidity" class="stat-block">
             <progress-ring stroke="ff0000" stroke-width="8" radius="100" progress="80"></progress-ring>
 
             <h2>HUMIDITY</h2>
             <div class="stat">...</div>
         </div>
-        
-        <div id="pressure" class="stat-block">
+
+        <div id="stats-pressure" class="stat-block">
             <progress-ring stroke="4635e2" stroke-width="8" radius="100" progress="80"></progress-ring>
 
             <h2>PRESSURE</h2>
             <div class="stat">...</div>
         </div>
 
-        <div id="temperature" class="stat-block">
+        <div id="stats-temperature" class="stat-block">
             <progress-ring stroke="00ff00" stroke-width="8" radius="100" progress="80"></progress-ring>
 
             <h2>TEMPERATURE</h2>
             <div class="stat">...</div>
         </div>
+    </div>
+
+    <div class="controls">
+        <form id="controls-profile" onsubmit="controls_profile_submit()">
+            <p>
+                <label for="age"><h3>Age</h3></label>
+                <input id="controls-profile-age-yr" name="age" type="number" placeholder="years" min="0" required>
+                <input id="controls-profile-age-mo" name="age" type="number" placeholder="months" min="0" max="11" step="0.01">
+            </p>
+
+            <p>
+                <label for="height"><h3>Height</h3></label>
+
+                <div id="controls-profile-height-ft">
+                    <input id="controls-profile-height-ft-ft" name="height" type="number" placeholder="ft" min="0" required>
+                    <input id="controls-profile-height-ft-in" name="height" type="number" placeholder="in" min="0" max="11" step="0.01">
+                </div>
+
+                <div id="controls-profile-height-cm" class="inactive">
+                    <input id="controls-profile-height-cm-cm" name="height" type="number" placeholder="cm" min="0" step="0.01" required>
+                </div>
+            </p>
+            <p>
+                <select id="controls-profile-height-unit" name="height-unit" required autocomplete="off" onchange="height_unit_changeUnit()">
+                    <option value="ft" selected>ft, in</option>
+                    <option value="cm">cm</option>
+                </select>
+            </p>
+
+            <p>
+                <label for="weight"><h3>Weight</h3></label>
+                <input id="controls-profile-weight" class="noClear" name="weight" type="number" placeholder="lbs" min="0" step="0.01" required>
+                
+                <select id="controls-profile-weight-unit" class="noClear" name="weight-unit" min="0" required autocomplete="off" onchange="weight_unit_changeUnit()">
+                    <option value="lb" selected>lbs</option>
+                    <option value="kg">kg</option>
+                    <option value="st">st</option>
+                </select>
+            </p>
+
+            <p>
+                <label for="gender"><h3>Biological sex</h3></label>
+                <select id="controls-profile-gender" name="gender" required autocomplete="off">
+                    <option selected>—</option>
+                    <option value="m">Male</option>
+                    <option value="f">Female</option>
+                </select>
+            </p>
+
+            <p>
+                <label for="disease"><h3>Disease</h3></label>
+                <input id="controls-profile-disease" name="disease" type="text">
+            </p>
+
+            <input id="controls-profile-submit" class="material-icons" type="submit" value="done">
+        </form>
     </div>
 
     <script src="./build/app.js"></script>
