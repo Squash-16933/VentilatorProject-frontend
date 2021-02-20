@@ -37,11 +37,11 @@ input {
 
     &:invalid {
         box-shadow: none;
-        border: $color-input-error 2px solid;
+        border: $color-error 2px solid;
     }
 
     &:invalid:focus {
-        border: $color-input-error-focus 2px solid;
+        border: $color-error-focus 2px solid;
     }
 
     &[type="number"] {
