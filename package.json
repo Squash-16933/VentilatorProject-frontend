@@ -34,8 +34,5 @@
     "@babel/core": "^7.11.1",
     "@babel/preset-env": "^7.11.0",
     "sass": "^1.26.10"
-  },
-  "dependencies": {
-    "requirejs": "^2.3.6"
   }
 }
