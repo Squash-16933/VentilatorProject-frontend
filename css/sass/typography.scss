@@ -1,4 +1,6 @@
 @import url(https://rsms.me/inter/inter.css);
+@import 'vars';
+
 html {
     font-family: "Inter", sans-serif;
 }
@@ -127,4 +129,8 @@ figcaption {
 }
 .caption {
     @include typography-styles-caption;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: $color-emphasis;
 }
