@@ -4,7 +4,7 @@ The communication protocol dictates the specifics of how the client and server i
 It's based on HTTP ([RFC 7540](https://tools.ietf.org/html/rfc7540)) and JSON ([RFC 8259](https://tools.ietf.org/html/rfc8259)), and is still in its early stages. It's written in EcmaScript. See also: **Version numbers**
 
 ## Definitions
-- The **client** is the computer (or if the server is on the same computer as the client, the specific app) that connects to the server with a websocket.
+- The **client** is one of the computers (or if the server is on the same computer as the client, the specific program) that connects to the server with a websocket. Multiple clients can be connected to one server. If a client computer is connected to multiple servers, each connection is one client.
 - The **server** (or **Pi**, even if it's not a Raspberry Pi) is the computer that operates the ventilator, responding to and executing requests from the client.
 - **Sessions** (or **connections**) start when the client connects to the server with a websocket, and end when the websocket connection closes.
 - **Requests** are requests sent from the client to the server. See also: **Request types > Naming convention > Definitions**
