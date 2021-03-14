@@ -1,4 +1,4 @@
-@import 'vars';
+@import "vars";
 
 $color-title-shadow-90-dark: #ffffff1a;
 $color-title-shadow-90-light: #0000001a;
@@ -28,11 +28,23 @@ $transition-title-flickerin: 500ms;
 $transition-controls-profile-height-unit: 1s; // When changing this, update app.js: height_unit_changeUnit()
 $transition-display: 800ms;
 
-#title {
-    top: 10%;
-    left: 10%;
+body {
+    position: relative;
+}
+
+header {
     position: absolute;
-    font-weight: 500;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 20%;
+}
+
+header img {
+    display: inline;
+}
+
+#title {
     opacity: 0;
 
     animation-name: title-flickerin;
@@ -49,7 +61,7 @@ $transition-display: 800ms;
 }
 
 #line-left {
-    bottom: 0%;
+    bottom: 0;
     left: 20%;
     width: 2px;
 
@@ -58,7 +70,7 @@ $transition-display: 800ms;
 }
 
 #line-right {
-    bottom: 0%;
+    bottom: 0;
     right: 30%;
     width: 2px;
 
@@ -69,7 +81,9 @@ $transition-display: 800ms;
 .line {
     position: absolute;
     background-color: $color-primary;
-    @if $theme == 0 {box-shadow: 0 0 2px $color-primary;}
+    @if $theme == 0 {
+        box-shadow: 0 0 2px $color-primary;
+    }
 
     animation-duration: $transition-line-expand;
     animation-timing-function: ease-out;
@@ -139,6 +153,14 @@ $transition-display: 800ms;
     grid-area: temperature;
 }
 
+// Logo
+#logo {
+    margin: auto;
+
+    width: 200px;
+    max-width: 50%;
+}
+
 // Controls
 .controls {
     position: absolute;
@@ -170,14 +192,34 @@ $transition-display: 800ms;
     width: 200px;
 }
 
-#controls-profile-submit {
+#controls-profile-submit-wrapper {
+    position: relative;
+    width: 150px;
+    height: 50px;
     margin: 40px auto auto auto;
+}
+
+#controls-profile-submit {
+    width: 100%;
+    height: 100%;
+    margin: 0;
 
     background-color: $color-secondary;
-    color: $color-on-secondary;
-    width: 100px;
-    height: 50px;
     border-radius: 25px;
+}
+
+#controls-profile-submit-wrapper span {
+    display: inline-block;
+    position: absolute;
+    width: 100%;
+    height: 1.2em;
+    text-align: center;
+    top: calc((50px - 1.2em)/2);
+    left: 0;
+    
+    color: $color-on-secondary;
+    font-family: Inter;
+    font-size: 1.2em;
 }
 
 // Animations
