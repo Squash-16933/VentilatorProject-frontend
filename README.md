@@ -1,5 +1,5 @@
-# Ventilator Front-end
-This is the front-end for the VentilatorProject. It's written in HTML/Sass/ES6.
+# Ventilator Front End
+This is the front end for LeagueAir. It's written in HTML, Sass, and ES6.
 
 ## Setup
 1. [Install NPM](https://www.npmjs.com/get-npm).

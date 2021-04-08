@@ -222,6 +222,15 @@ Sets the patient's settings. The patient's settings are used to configure the ve
 - `gender` Patient's biological sex (`male` or `female`) (no way to handle intersex yet)
 - *`disease`* Patient's disease, if applicable
 
+### `getTime` - GET
+Gets the amount of time that the ventilator has been active.
+
+#### Response
+```js
+{
+    "data": 86400 // Time in seconds
+}
+
 ## Version numbers
 ![CalVer MAJOR.YY0W.MICRO](https://img.shields.io/badge/calver-MAJOR.YY0W.MICRO-22bfda.svg)
 

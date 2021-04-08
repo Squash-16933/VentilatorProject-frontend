@@ -9,6 +9,11 @@ class Handler {
         var temperature = document.querySelector('#stats-temperature .stat')
         temperature.innerHTML = Math.round(response.data.temperature/100)+'<div class="stat-unit">°C</div>'
     }
+
+    static h_getTime(response) {
+        var time = document.querySelector('#stats-time .stat')
+        time.innerHTML = response.data+'<div class="stat-unit">s</div>'
+    }
 }
 
 class Protocol {
@@ -53,6 +58,7 @@ class Protocol {
      */
     onReady() {
         this.send('getAll')
+        this.send('getTime')
     }
 
     /**
@@ -84,6 +90,9 @@ class Protocol {
                 switch (corr.type) {
                     case 'getAll':
                         Handler.h_getAll(JSON.parse(event.data))
+                        break
+                    case 'getTime':
+                        Handler.h_getTime(JSON.parse(event.data))
                         break
                 }
             }

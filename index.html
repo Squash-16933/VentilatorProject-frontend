@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Ventilator | Home</title>
+    <title>LeagueAir | Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
@@ -16,40 +16,39 @@
 </head>
 
 <body>
-    <header>
+    <header class="section">
         <img id="logo" src="assets/League Logo F White FINAL.svg" alt="The LEAGUE of Amazing Programmers logo">
-    
-        <h1 id="title">Ventilator Project</h1>
+
+        <h1 id="title">LeagueAir</h1>
     </header>
 
     <div id="line-top" class="line"></div>
     <div id="line-left" class="line"></div>
     <div id="line-right" class="line"></div>
 
-    <div class="stats">
+    <div class="stats section">
         <div id="stats-humidity" class="stat-block">
-            <progress-ring stroke="ff0000" stroke-width="8" radius="100" progress="80"></progress-ring>
-
-            <h2><i class="icon fas fa-tint"></i>HUMIDITY</h2>
+            <h2><i class="icon fas fa-tint"></i>Humidity</h2>
             <div class="stat">...</div>
         </div>
 
         <div id="stats-pressure" class="stat-block">
-            <progress-ring stroke="4635e2" stroke-width="8" radius="100" progress="80"></progress-ring>
-
-            <h2><i class="icon fas fa-tachometer-alt"></i>PRESSURE</h2>
+            <h2><i class="icon fas fa-tachometer-alt"></i>Pressure</h2>
             <div class="stat">...</div>
         </div>
 
         <div id="stats-temperature" class="stat-block">
-            <progress-ring stroke="00ff00" stroke-width="8" radius="100" progress="80"></progress-ring>
+            <h2><i class="icon fas fa-thermometer-three-quarters"></i>Temperature</h2>
+            <div class="stat">...</div>
+        </div>
 
-            <h2><i class="icon fas fa-thermometer-three-quarters"></i>TEMPERATURE</h2>
+        <div id="stats-time" class="stat-block">
+            <h2><i class="icon fas fa-stopwatch"></i>Time</h2>
             <div class="stat">...</div>
         </div>
     </div>
 
-    <div class="controls">
+    <div class="controls section">
         <form id="controls-profile" onsubmit="controls_profile_submit()">
             <p>
                 <label for="age">
@@ -119,10 +118,10 @@
 
             <div id="controls-profile-submit-wrapper">
                 <input id="controls-profile-submit" type="submit" value="">
-                <span><i class="icon fas fa-check"></i> Submit</div>
+                <span><i class="icon fas fa-check"></i> Submit
             </div>
-        </form>
     </div>
+    </form>
 
     <script src="./build/app.js"></script>
     <script src="https://kit.fontawesome.com/1c15d88451.js" crossorigin="anonymous"></script>
