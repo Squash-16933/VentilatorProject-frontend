@@ -1,0 +1,85 @@
+@import 'vars';
+
+body {
+    background-color: $color-bg;
+    color: $color-on-bg;
+}
+
+// Styles for elements
+
+// Icons
+.icon {
+    font-size: 1.2em;
+    margin-right: 10px;
+}
+
+// Inputs
+
+// Hides arrows on number inputs
+// Chrome, Safari, Edge, Opera
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+// Firefox
+input {
+    width: 100px;
+    background: $color-input;
+    color: $color-on-input;
+
+    border: transparent 2px solid;
+    border-radius: 5px;
+    padding: 5px;
+    box-sizing: border-box;
+
+    transition: border $transition-input-fade;
+
+    &:focus {
+        outline: none;
+        border: $color-on-input 2px solid;
+    }
+
+    &:invalid {
+        box-shadow: none;
+        border: $color-error 2px solid;
+    }
+
+    &:invalid:focus {
+        border: $color-error-focus 2px solid;
+    }
+
+    &[type="number"] {
+        -moz-appearance: textfield;
+    }
+}
+
+input::placeholder {
+    color: $color-input-placeholder;
+    padding: 5px;
+}
+
+/* Selects */
+
+select {
+    background-color: $color-input;
+    color: $color-on-input;
+    border: transparent 2px solid;
+
+    transition: border $transition-input-fade;
+
+    border-radius: 5px;
+    padding: 5px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+
+    &:focus {
+        outline: none;
+        border: $color-on-input 2px solid;
+    }
+}
+
+option {
+    background-color: $color-bg;
+}

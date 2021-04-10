@@ -4,7 +4,7 @@ The communication protocol dictates the specifics of how the client and server i
 It's based on HTTP ([RFC 7540](https://tools.ietf.org/html/rfc7540)) and JSON ([RFC 8259](https://tools.ietf.org/html/rfc8259)), and is still in its early stages. It's written in EcmaScript. See also: **Version numbers**
 
 ## Definitions
-- The **client** is the computer (or if the server is on the same computer as the client, the specific app) that connects to the server with a websocket.
+- The **client** is one of the computers (or if the server is on the same computer as the client, the specific program) that connects to the server with a websocket. Multiple clients can be connected to one server. If a client computer is connected to multiple servers, each connection is one client.
 - The **server** (or **Pi**, even if it's not a Raspberry Pi) is the computer that operates the ventilator, responding to and executing requests from the client.
 - **Sessions** (or **connections**) start when the client connects to the server with a websocket, and end when the websocket connection closes.
 - **Requests** are requests sent from the client to the server. See also: **Request types > Naming convention > Definitions**
@@ -138,11 +138,11 @@ Here is a demo communication session:
 - Request types are named in camelCase, starting with a lowercase letter (e.g. `getHumidity`)
 - Get request types must have `get` in their name (e.g. `getHumidity` or `getCurrentHumidity` or `humidityGet`)
 
-## Documentation
+## Message types
 ### `getHumidity` - GET
 Gets the current humidity.
 
-#### Flags
+#### `flags`
 - `continuous`
     
     **Defaults to `false`**
@@ -159,7 +159,7 @@ Gets the current humidity.
 ### `getPressure` - GET
 Gets the current pressure.
 
-#### Flags
+#### `flags`
 - `continuous`
     
     **Defaults to `false`**
@@ -176,7 +176,7 @@ Gets the current pressure.
 ### `getTemp` - GET
 Gets the current temperature.
 
-#### Flags
+#### `flags`
 - `continuous`
     
     **Defaults to `false`**
@@ -193,7 +193,7 @@ Gets the current temperature.
 ### `getAll` - GET
 Requests a continuous update of all three.
 
-#### Flags
+#### `flags`
 - `continuous`
     
     **Defaults to `false`**
@@ -211,11 +211,25 @@ Requests a continuous update of all three.
 }
 ```
 
-### `powerOn` - POST
-Turns on the ventilator.
+### `setProfile` - POST
+Sets the patient's settings. The patient's settings are used to configure the ventilator.
 
-### `powerOff` - POST
-Turns off the ventilator.
+#### `data`
+*Optional*
+- `age` Patient's age (years)
+- `height` Patient's height (in)
+- `weight` Patient's weight (lb)
+- `gender` Patient's biological sex (`male` or `female`) (no way to handle intersex yet)
+- *`disease`* Patient's disease, if applicable
+
+### `getTime` - GET
+Gets the amount of time that the ventilator has been active.
+
+#### Response
+```js
+{
+    "data": 86400 // Time in seconds
+}
 
 ## Version numbers
 ![CalVer MAJOR.YY0W.MICRO](https://img.shields.io/badge/calver-MAJOR.YY0W.MICRO-22bfda.svg)

@@ -1,17 +1,12 @@
-// Paths are relative to build folder
+@import url(https://rsms.me/inter/inter.css);
+@import 'vars';
 
-// Configurations
-$color-primary: #4635e2;
-$color-on-primary: #fff;
-$color-secondary: #262938;
-$color-on-secondary: #fff;
-
-@import url("https://rsms.me/inter/inter.css");
-html {
+body {
     font-family: "Inter", sans-serif;
 }
+
 @supports (font-variation-settings: normal) {
-    html {
+    body {
         font-family: "Inter var", sans-serif;
     }
 }
@@ -135,4 +130,8 @@ figcaption {
 }
 .caption {
     @include typography-styles-caption;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: $color-emphasis;
 }

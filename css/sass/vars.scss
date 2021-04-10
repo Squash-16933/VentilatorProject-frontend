@@ -1,0 +1,52 @@
+// Paths are relative to build folder
+
+// Colors
+$color-primary: #2196f3;
+$color-on-primary: #000;
+$color-secondary: #80d8ff;
+$color-on-secondary: #000;
+
+$theme: 0; // 0: dark, 1: light
+
+$color-bg-dark: #121212;
+$color-bg-light: #fff;
+$color-on-bg-dark: #fff;
+$color-on-bg-light: #00000099;
+
+$color-emphasis-dark: #fff;
+$color-emphasis-light: #000000de;
+
+$color-input-dark: #ffffff20;
+$color-input-light: #00000010;
+$color-input-placeholder-dark: #ffffff99;
+$color-input-placeholder-light: #00000099;
+$color-on-input-dark: #fff;
+$color-on-input-light: #000000de;
+
+$color-error-dark: #f44;
+$color-error-light: #f00;
+$color-error-focus-dark: #faa;
+$color-error-focus-light: #f66;
+
+$color-emphasis: $color-emphasis-dark;
+$color-bg: $color-bg-dark;
+$color-on-bg: $color-on-bg-dark;
+$color-input: $color-input-dark;
+$color-input-placeholder: $color-input-placeholder-dark;
+$color-on-input: $color-on-input-dark;
+$color-error: $color-error-dark;
+$color-error-focus: $color-error-focus-dark;
+
+@if $theme == 1 {
+    $color-emphasis: $color-emphasis-light;
+    $color-bg: $color-bg-light;
+    $color-on-bg: $color-on-bg-light;
+    $color-input: $color-input-light;
+    $color-input-placeholder: $color-input-placeholder-light;
+    $color-on-input: $color-on-input-light;
+    $color-error: $color-error-light;
+    $color-error-focus: $color-error-focus-light;
+}
+
+// Transition times
+$transition-input-fade: 200ms;
