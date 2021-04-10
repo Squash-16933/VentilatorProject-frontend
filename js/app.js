@@ -11,8 +11,42 @@ class Handler {
     }
 
     static h_getTime(response) {
-        var time = document.querySelector('#stats-time .stat')
-        time.innerHTML = response.data+'<div class="stat-unit">s</div>'
+        var time = response.data
+
+        var dys = Math.floor(time/86400)
+        time %= 86400
+        var hrs = Math.floor(time/3600)
+        time %= 3600
+        var min = Math.floor(time/60)
+        time %= 60
+        var sec = time
+
+        var el = document.querySelector('#stats-time .stat')
+        el.innerHTML = ''
+
+        if (dys > 0) {
+            Handler.addTime(dys, 'd')
+            Handler.addTime(hrs, 'h')
+            Handler.addTime(min, 'm')
+            Handler.addTime(sec, 's')
+        } else if (hrs > 0) {
+            Handler.addTime(hrs, 'h')
+            Handler.addTime(min, 'm')
+            Handler.addTime(sec, 's')
+        } else if (min > 0) {
+            Handler.addTime(min, 'm')
+            Handler.addTime(sec, 's')
+        } else {
+            Handler.addTime(sec, 's')
+        }
+    }
+
+    static addTime(num, unit) {
+        var el = document.createElement('div')
+        el.classList.add('stat-time-block')
+        el.innerHTML = num+'<div class="stat-unit">'+unit+'</div>'
+
+        document.querySelector('#stats-time .stat').appendChild(el)
     }
 }
 
