@@ -189,16 +189,18 @@ function controls_profile_valid() {
 }
 
 function height_unit_changeUnit() {
-    var value = document.querySelector('#controls-profile-height-unit').value
     var active
     var inactive
 
-    if (value == 'ft') {
-        active = document.querySelector('#controls-profile-height-ft')
-        inactive = document.querySelector('#controls-profile-height-cm')
-    } else if (value == 'cm') {
+    // Check if cm is inactive
+    if (document.querySelector('#controls-profile-height-cm').classList.contains('inactive')) {
+        // Switch cm to active one
         active = document.querySelector('#controls-profile-height-cm')
         inactive = document.querySelector('#controls-profile-height-ft')
+    } else {
+        // Switch ft to active one
+        active = document.querySelector('#controls-profile-height-ft')
+        inactive = document.querySelector('#controls-profile-height-cm')
     }
 
     // Hide unnecessary input, show necessary one
