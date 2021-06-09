@@ -11,6 +11,28 @@ body {
 .icon {
     font-size: 1.2em;
     margin-right: 10px;
+    color: $color-primary;
+}
+
+.icon-button {
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    text-align: center;
+    padding: auto;
+
+    border: none;
+    outline: none;
+    cursor: pointer;
+    
+    &:focus {
+        background: #ffffff1a;
+    }
+}
+
+.icon-button .icon {
+    width: 100%;
+    color: $color-on-input;
 }
 
 // Inputs
@@ -24,14 +46,15 @@ input::-webkit-inner-spin-button {
 }
 
 // Firefox
-input {
-    width: 100px;
+input, select, textarea {
+    width: 5em;
     background: $color-input;
     color: $color-on-input;
 
     border: transparent 2px solid;
     border-radius: 5px;
-    padding: 5px;
+    margin-bottom: 0.5em;
+    padding: 0.4em;
     box-sizing: border-box;
 
     transition: border $transition-input-fade;
@@ -55,30 +78,44 @@ input {
     }
 }
 
-input::placeholder {
+input::placeholder, textarea::placeholder {
     color: $color-input-placeholder;
     padding: 5px;
 }
 
-/* Selects */
+input[type=number] {
+    width: 5em;
+}
 
-select {
-    background-color: $color-input;
-    color: $color-on-input;
-    border: transparent 2px solid;
+input[type=submit] {
+    min-width: 100%;
+    max-width: 300px;
+    height: 100%;
+    margin: 0;
 
-    transition: border $transition-input-fade;
+    background-color: $color-secondary;
+    border-radius: 25px;
+}
 
-    border-radius: 5px;
-    padding: 5px;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
+/* Buttons */
+button {
+    background: $color-secondary;
 
     &:focus {
         outline: none;
         border: $color-on-input 2px solid;
     }
 }
+
+/* Textareas */
+
+textarea {
+    width: 14em;
+    height: 6em;
+    resize: none;
+}
+
+/* Selects */
 
 option {
     background-color: $color-bg;

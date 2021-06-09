@@ -6,12 +6,12 @@ $color-on-primary: #000;
 $color-secondary: #80d8ff;
 $color-on-secondary: #000;
 
-$theme: 0; // 0: dark, 1: light
+$theme: 1; // 0: dark, 1: light
 
 $color-bg-dark: #121212;
 $color-bg-light: #fff;
 $color-on-bg-dark: #fff;
-$color-on-bg-light: #00000099;
+$color-on-bg-light: #000;
 
 $color-emphasis-dark: #fff;
 $color-emphasis-light: #000000de;
@@ -19,7 +19,7 @@ $color-emphasis-light: #000000de;
 $color-input-dark: #ffffff20;
 $color-input-light: #00000010;
 $color-input-placeholder-dark: #ffffff99;
-$color-input-placeholder-light: #00000099;
+$color-input-placeholder-light: #000;
 $color-on-input-dark: #fff;
 $color-on-input-light: #000000de;
 

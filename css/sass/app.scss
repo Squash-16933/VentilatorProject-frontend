@@ -6,9 +6,9 @@ $color-title-shadow-dark: #ffffff34;
 $color-title-shadow-light: #00000034;
 
 $color-stats-stat-dark: #ffffffb0;
-$color-stats-stat-light: #000000b0;
+$color-stats-stat-light: #000;
 $color-stats-stat-unit-dark: #ffffffb0;
-$color-stats-stat-unit-light: #000000b0;
+$color-stats-stat-unit-light: #000;
 
 $color-title-shadow-90: $color-title-shadow-90-dark;
 $color-title-shadow: $color-title-shadow-dark;
@@ -24,49 +24,21 @@ $color-stats-stat-unit: $color-stats-stat-unit-dark;
 
 // Transition times
 $transition-line-expand: 800ms;
-$transition-title-flickerin: 500ms;
+$transition-title-flickerin: 700ms;
+
+$transition-title-moveup: 500ms;
 $transition-controls-profile-height-unit: 1s; // When changing this, update app.js: height_unit_changeUnit()
 $transition-display: 800ms;
 
-// Media queries
-@media (max-width: 900px) {
-    #line-left, #line-right {
-        display: none;
-    }
-
-    .stats {
-        display: block;
-        background: green;
-        position: default !important;
-        width: 100% !important;
-        height: auto !important;
-    }
-
-    .stat-block {
-        display: inline-block !important;
-        width: auto !important;
-        margin: auto 30px !important;
-    }
-
-    .controls {
-        display: block !important;
-        position: default !important;
-        top: 0 !important;
-        left: 0 !important;
-        width: 100% !important;
-        height: auto !important;
-    }
-}
-
 body {
     width: 100vw;
-    height: 100vh;
+    overflow-x: hidden;
+    
     margin: 0;
     padding: 0;
 }
 
 .section {
-    position: absolute;
     box-sizing: border-box;
     padding: 10px;
 }
@@ -76,12 +48,7 @@ header {
     height: 150px;
 }
 
-header img {
-    max-height: 100%;
-    display: inline;
-}
-
-#title {
+header h1 {
     opacity: 0;
 
     display: inline-block;
@@ -95,9 +62,16 @@ header img {
     animation-fill-mode: forwards;
 }
 
+.noClear {
+    clear: none;
+    display: inline;
+}
+
+
+// Lines
 #line-top {
-    width: 100%;
     top: 150px;
+    width: 100%;
     height: 2px;
 
     animation-name: line-expandx;
@@ -107,6 +81,7 @@ header img {
     bottom: 0;
     left: 240px;
     width: 2px;
+    height: 100%;
 
     animation-name: line-expandy;
 }
@@ -131,17 +106,10 @@ header img {
     animation-fill-mode: forwards;
 }
 
-.noClear {
-    clear: none;
-    display: inline;
-}
-
 // Stats grid
 .stats {
     width: 240px;
     height: 80%;
-    top: 150px;
-    left: 0;
 
     opacity: 0;
     text-align: center;
@@ -184,11 +152,13 @@ header img {
 }
 
 // Logo
-#logo {
+header img {
     margin: auto;
+    display: inline;
 
-    width: 200px;
     max-width: 50%;
+    max-height: 100%;
+    vertical-align: middle;
 }
 
 // Controls
@@ -217,24 +187,20 @@ header img {
     animation: fadein $transition-input-fade;
 }
 
-#controls-profile-disease {
-    width: 200px;
+fieldset {
+    border: none;
 }
 
-#controls-profile-submit-wrapper {
+legend {
+    text-align: center;
+    width: 100%;
+}
+
+.submit-wrapper {
     position: relative;
     width: 150px;
     height: 50px;
-    margin: 40px auto auto auto;
-}
-
-#controls-profile-submit {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-
-    background-color: $color-secondary;
-    border-radius: 25px;
+    margin: 40px auto;
 }
 
 #controls-profile-submit-wrapper span {
@@ -242,6 +208,7 @@ header img {
     position: absolute;
     width: 100%;
     height: 1.2em;
+
     text-align: center;
     top: calc((50px - 1.2em)/2);
     left: 0;
@@ -249,6 +216,14 @@ header img {
     color: $color-on-secondary;
     font-family: Inter;
     font-size: 1.2em;
+}
+
+#controls-profile-submit-wrapper span .icon {
+    color: $color-on-input;
+}
+
+.inline-label {
+    margin: auto 0.5em;
 }
 
 // Animations
@@ -267,6 +242,26 @@ header img {
     }
     to {
         height: calc(100% - 150px);
+    }
+}
+
+@keyframes title-moveup {
+    from {
+        top: calc(50vh - 75px - 1.5em);
+    }
+
+    to {
+        top: 0;
+    }
+}
+
+@keyframes title-imgscale {
+    from {
+        transform: scale(1.5);
+    }
+    
+    to {
+        transform: scale(1);
     }
 }
 
@@ -316,5 +311,79 @@ header img {
 
     100% {
         opacity: 0;
+    }
+}
+
+
+// Media queries
+@media (max-width: 900px) {
+    header {
+        width: 100%;
+        height: calc(150px + 3em);
+
+        position: relative;
+        top: calc(50vh - 75px - 1.5em);
+
+        animation-name: title-moveup;
+        animation-duration: $transition-title-moveup;
+        animation-delay: $transition-title-flickerin;
+        animation-fill-mode: forwards;
+    }
+
+    header h1 {
+        animation-name: fadein;
+        animation-duration: $transition-title-flickerin;
+        animation-delay: $transition-line-expand;
+        animation-fill-mode: forwards;
+    }
+
+    header img {
+        display: block;
+        height: 120px;
+        transform: scale(1.5);
+
+        animation-name: title-imgscale;
+        animation-duration: $transition-title-moveup;
+        animation-delay: $transition-title-flickerin;
+        animation-timing-function: cubic-bezier(0,.82,.54,1.8);
+        animation-fill-mode: forwards;
+    }
+
+    header h1 {
+        display: block;
+        width: min-content;
+        font-size: 30px;
+        margin: 5px auto;
+    }
+
+    #line-left, #line-right {
+        display: none;
+    }
+
+    #line-top {
+        display: none;
+    }
+
+    .section {
+        margin: 15px auto;
+    }
+
+    .stats {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .stat-block {
+        display: inline-block;
+        width: 8em;
+        margin: auto 30px;
+    }
+
+    .controls {
+        display: block;
+        position: static;
+        width: 100%;
+        height: auto;
     }
 }
