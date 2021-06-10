@@ -169,6 +169,8 @@ function controls_profile_submit() {
                 data.weight = document.querySelector('#controls-profile-weight').value
             case 'kg':
                 data.weight = document.querySelector('#controls-profile-weight').value*0.45359237
+            case 'st':
+                data.weight = document.querySelector('#controls-profile-weight').value*14
         }
 
         protocol.send('setProfile', data)
@@ -211,21 +213,4 @@ function height_unit_changeUnit() {
     active.classList.add('active')
     active.classList.remove('inactive')
     active.querySelector('input').setAttribute('required', 'required')
-}
-
-function weight_unit_changeUnit() {
-    var value = document.querySelector('#controls-profile-weight-unit').value
-    var element = document.querySelector('#controls-profile-weight')
-
-    switch (value) {
-        case 'lb': // Note: do not confuse lb and lbs
-            element.setAttribute('placeholder', 'lbs')
-            break
-        case 'kg':
-            element.setAttribute('placeholder', 'kg')
-            break
-        case 'st':
-            element.setAttribute('placeholder', 'st')
-            break
-    }
 }

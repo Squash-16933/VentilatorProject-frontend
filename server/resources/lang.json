@@ -1,0 +1,94 @@
+{
+    "home": {
+        "en": "LeagueAir | Home",
+        "es": "LigaAire | Incio"
+    },
+    "home.title": {
+        "en": "LeagueAir",
+        "es": "LigaAire"
+    },
+    "home.stats.humidity": {
+        "en": "Humidity",
+        "es": "Humedad"
+    },
+    "home.stats.pressure": {
+        "en": "Pressure",
+        "es": "Presión"
+    },
+    "home.stats.temperature": {
+        "en": "Temperature",
+        "es": "Temperatura"
+    },
+    "home.stats.time": {
+        "en": "Time",
+        "es": "Tiempo"
+    },
+    "home.controls.age": {
+        "en": "Age",
+        "es": "Edad"
+    },
+    "home.controls.age.yr": {
+        "en": "years",
+        "es": "años"
+    },
+    "home.controls.age.mo": {
+        "en": "months",
+        "es": "meses"
+    },
+    "home.controls.height": {
+        "en": "Height",
+        "es": "Altura"
+    },
+    "home.controls.height.ft.ft": {
+        "en": "ft",
+        "es": "ft"
+    },
+    "home.controls.height.ft.in": {
+        "en": "in",
+        "es": "in"
+    },
+    "home.controls.height.cm.cm": {
+        "en": "cm",
+        "es": "cm"
+    },
+    "home.controls.weight": {
+        "en": "Weight",
+        "es": "Peso"
+    },
+    "home.controls.weight.lb": {
+        "en": "lbs",
+        "es": "lbs"
+    },
+    "home.controls.weight.kg": {
+        "en": "kg",
+        "es": "kg"
+    },
+    "home.controls.weight.st": {
+        "en": "st",
+        "es": "st"
+    },
+    "home.controls.gender": {
+        "en": "Biological sex",
+        "es": "Sexo biológico"
+    },
+    "home.controls.gender.none": {
+        "en": "&mdash;",
+        "es": "&mdash;"
+    },
+    "home.controls.gender.m": {
+        "en": "Male",
+        "es": "Masculino"
+    },
+    "home.controls.gender.f": {
+        "en": "Female",
+        "es": "Femenino"
+    },
+    "home.controls.disease": {
+        "en": "Medical conditions",
+        "es": "Enfermedades"
+    },
+    "home.controls.submit": {
+        "en": "Submit",
+        "es": "Enviar"
+    }
+}
