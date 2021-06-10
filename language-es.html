@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>LeagueAir | Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <link href="./css/normalize.css" rel="stylesheet">
+
+    <link href="./build/app.css" rel="stylesheet">
+    <link href="./build/components.css" rel="stylesheet">
+    <link href="./build/typography.css" rel="stylesheet">
+
+    <link rel='icon' href='./assets/favicon.png' type='image/png' />
+</head>
+
+<body>
+    <header class="section">
+        <img src="assets/League Logo F Orange FINAL.svg" alt="The LEAGUE of Amazing Programmers logo">
+
+        <h1>LeagueAir</h1>
+    </header>
+
+    <div id="line-top" class="line"></div>
+    <div id="line-left" class="line"></div>
+    <div id="line-right" class="line"></div>
+
+    <div class="stats section">
+        <div id="stats-humidity" class="stat-block">
+            <h2><i class="icon fas fa-tint"></i>Humedad</h2>
+            <div class="stat">...</div>
+        </div>
+
+        <div id="stats-pressure" class="stat-block">
+            <h2><i class="icon fas fa-tachometer-alt"></i>Presión</h2>
+            <div class="stat">...</div>
+        </div>
+
+        <div id="stats-temperature" class="stat-block">
+            <h2><i class="icon fas fa-thermometer-three-quarters"></i>Temperatura</h2>
+            <div class="stat">...</div>
+        </div>
+
+        <div id="stats-time" class="stat-block">
+            <h2><i class="icon fas fa-stopwatch"></i>Tiempo</h2>
+            <div class="stat">...</div>
+        </div>
+    </div>
+
+    <div class="controls section">
+        <form id="controls-profile" onsubmit="controls_profile_submit()">
+            <fieldset>
+                <legend><h3><i class="icon fas fa-calendar-alt"></i> Edad</h3></legend>
+                <input id="controls-profile-age-yr" name="age-yr" type="number" min="0" required><label for="age-yr" class="inline-label">años</label>
+                <input id="controls-profile-age-mo" name="age-mo" type="number" min="0" max="11"
+                    step="0.01"><label for="age-mo" class="inline-label">meses</label>
+            </fieldset>
+
+            <fieldset>
+                <legend><h3><i class="icon fas fa-ruler-vertical"></i> Altura</h3></legend>
+                <p>
+
+                <div id="controls-profile-height-ft">
+                    <input id="controls-profile-height-ft-ft" name="height-ft-ft" type="number" min="0"
+                        required><label for="height-ft-ft" class="inline-label">ft</label>
+                    <input id="controls-profile-height-ft-in" name="height-ft-in" type="number" min="0"
+                        max="11" step="0.01"><label for="height-ft-in" class="inline-label">in</label>
+                </div>
+
+                <div id="controls-profile-height-cm" class="inactive">
+                    <input id="controls-profile-height-cm-cm" name="height-cm-cm" type="number" min="0"
+                        step="0.01"><label for="height-cm-cm" class="inline-label">cm</label>
+                </div>
+                </p>
+                <p>
+                    <button class="icon-button" id="#controls-profile-height-unit" onclick="height_unit_changeUnit()"><i class="icon fas fa-sync"></i></button>
+                </p>
+            </fieldset>
+
+            <fieldset>
+                <legend><h3><i class="icon fas fa-weight"></i> Peso</h3></legend>
+                <input id="controls-profile-weight" class="noClear" name="weight" type="number" placeholder="lbs"
+                    min="0" step="0.01" required>
+
+                <select id="controls-profile-weight-unit" class="noClear" name="weight-unit" min="0" required
+                    autocomplete="off" onchange="weight_unit_changeUnit()">
+                    <option value="lb" selected>lbs</option>
+                    <option value="kg">kg</option>
+                    <option value="st">st</option>
+                </select>
+            </fieldset>
+
+            <fieldset>
+                <legend><h3><i class="icon fas fa-venus-mars"></i> Sexo biológico</h3></legend>
+                <select id="controls-profile-gender" name="gender" required autocomplete="off">
+                    <option selected>—</option>
+                    <option value="m">Masculino</option>
+                    <option value="f">Femenino</option>
+                </select>
+            </fieldset>
+
+            <fieldset>
+                <legend><h3><i class="icon fas fa-biohazard"></i> Enfermedades</h3></legend>
+                <textarea id="controls-profile-disease" name="disease" type="text"></textarea>
+            </fieldset>
+
+            <div id="controls-profile-submit-wrapper" class="submit-wrapper">
+                <input id="controls-profile-submit" type="submit" value="">
+                <span><i class="icon fas fa-check"></i> Enviar</span>
+            </div>
+        </form>
+    </div>
+
+    <script src="./build/app.js"></script>
+    <script src="https://kit.fontawesome.com/1c15d88451.js" crossorigin="anonymous"></script>
+    <!-- Import Font Awesome icons -->
+</body>
+
+</html>
