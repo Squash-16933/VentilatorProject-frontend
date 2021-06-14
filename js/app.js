@@ -158,7 +158,7 @@ lang_arrange()
  */
 function lang_arrange() {
     var currLang = window.location.pathname.replace(/^\/?([a-z]{2})(.*)/, `$1`)
-    var select = document.querySelector('#language-select')
+    var select = document.querySelector('#language-select select')
     select.value = currLang
 }
 
@@ -166,7 +166,7 @@ function lang_arrange() {
  * Switches language in accordance with language selector.
  */
 function lang_switch() {
-    var select = document.querySelector('#language-select')
+    var select = document.querySelector('#language-select select')
     window.location.pathname = window.location.pathname.replace(/^\/?([a-z]{2})(.*)/, `/${select.value}$2`)
 }
 
