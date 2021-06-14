@@ -1,90 +1,112 @@
 {
     "home": {
         "en": "LeagueAir | Home",
-        "es": "LigaAire | Incio"
+        "es": "LigaAire | Incio",
+        "fr": "LigueAir | Accueil"
     },
     "home.title": {
         "en": "LeagueAir",
-        "es": "LigaAire"
+        "es": "LigaAire",
+		"fr": "LigueAir"
     },
     "home.stats.humidity": {
         "en": "Humidity",
-        "es": "Humedad"
+        "es": "Humedad",
+		"fr": "Humidité"
     },
     "home.stats.pressure": {
         "en": "Pressure",
-        "es": "Presión"
+        "es": "Presión",
+		"fr": "Pression"
     },
     "home.stats.temperature": {
         "en": "Temperature",
-        "es": "Temperatura"
+        "es": "Temperatura",
+		"fr": "Température"
     },
     "home.stats.time": {
         "en": "Time",
-        "es": "Tiempo"
+        "es": "Tiempo",
+		"fr": "Temps"
     },
     "home.controls.age": {
         "en": "Age",
-        "es": "Edad"
+        "es": "Edad",
+		"fr": "Âge"
     },
     "home.controls.age.yr": {
         "en": "years",
-        "es": "años"
+        "es": "años",
+		"fr": "ans"
     },
     "home.controls.age.mo": {
         "en": "months",
-        "es": "meses"
+        "es": "meses",
+		"fr": "mois"
     },
     "home.controls.height": {
         "en": "Height",
-        "es": "Altura"
+        "es": "Altura",
+		"fr": "Taille"
     },
     "home.controls.height.ft.ft": {
         "en": "ft",
-        "es": "ft"
+        "es": "ft",
+		"fr": "ft"
     },
     "home.controls.height.ft.in": {
         "en": "in",
-        "es": "in"
+        "es": "in",
+		"fr": "in"
     },
     "home.controls.height.cm.cm": {
         "en": "cm",
-        "es": "cm"
+        "es": "cm",
+		"fr": "cm"
     },
     "home.controls.weight": {
         "en": "Weight",
-        "es": "Peso"
+        "es": "Peso",
+		"fr": "Poids"
     },
     "home.controls.weight.lb": {
         "en": "lbs",
-        "es": "lbs"
+        "es": "lbs",
+		"fr": "lbs"
     },
     "home.controls.weight.kg": {
         "en": "kg",
-        "es": "kg"
+        "es": "kg",
+		"fr": "kg"
     },
     "home.controls.weight.st": {
         "en": "st",
-        "es": "st"
+        "es": "st",
+		"fr": "st"
     },
     "home.controls.gender": {
         "en": "Biological sex",
-        "es": "Sexo biológico"
+        "es": "Sexo biológico",
+		"fr": "Sexe biologique"
     },
     "home.controls.gender.m": {
         "en": "Male",
-        "es": "Masculino"
+        "es": "Masculino",
+		"fr": "Masculin"
     },
     "home.controls.gender.f": {
         "en": "Female",
-        "es": "Femenino"
+        "es": "Femenino",
+		"fr": "Féminin"
     },
     "home.controls.disease": {
         "en": "Medical conditions",
-        "es": "Enfermedades"
+        "es": "Enfermedades",
+		"fr": "Conditions médicales"
     },
     "home.controls.submit": {
         "en": "Submit",
-        "es": "Enviar"
+        "es": "Enviar",
+		"fr": "Soumettre"
     }
 }
