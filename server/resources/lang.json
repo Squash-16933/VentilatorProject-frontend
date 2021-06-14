@@ -71,10 +71,6 @@
         "en": "Biological sex",
         "es": "Sexo biológico"
     },
-    "home.controls.gender.none": {
-        "en": "&mdash;",
-        "es": "&mdash;"
-    },
     "home.controls.gender.m": {
         "en": "Male",
         "es": "Masculino"

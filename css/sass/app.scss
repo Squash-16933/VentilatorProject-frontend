@@ -67,6 +67,10 @@ header h1 {
     display: inline;
 }
 
+#language-select {
+    float: right;
+    margin: 2em 5em;
+}
 
 // Lines
 #line-top {
@@ -196,6 +200,17 @@ legend {
     width: 100%;
 }
 
+input[type=submit] {
+    width: 150px;
+    height: 50px;
+    margin: 40px auto;
+    
+    text-align: center;
+    color: $color-on-secondary;
+    font-family: Inter;
+    font-size: 1.2em;
+}
+
 .submit-wrapper {
     position: relative;
     width: 150px;
@@ -209,13 +224,9 @@ legend {
     width: 100%;
     height: 1.2em;
 
-    text-align: center;
     top: calc((50px - 1.2em)/2);
     left: 0;
     
-    color: $color-on-secondary;
-    font-family: Inter;
-    font-size: 1.2em;
 }
 
 #controls-profile-submit-wrapper span .icon {

@@ -18,7 +18,11 @@ function getTranslation(lang, match, p1, offset, string) {
     return transKey[p1][lang]
 }
 
-
+/**
+ * Sends homepage with requested language.
+ * @param {ReqIncomingMessage} req 
+ * @param {ResServerResponse} res 
+ */
 module.exports.get = (req, res) => {
     try {
         // Log request
@@ -42,24 +46,9 @@ Status:  200`)
     } catch (e) { console.log(e) }
 }
 
-
-module.exports.getEn = (req, res) => {
-    try {
-        // Log request
-        console.log(`
-Recieved request
-Time:    ${new Date().toISOString()}
-Request: GET ${req.url}`)
-
-        res.set('Content-Type', 'text/html')
-        res.status(200).send(
-            fs.readFileSync(path.resolve('./index.html'), 'utf8').replace(/{{([^}]+)}}/g, (match, p1, offset, string)=>getTranslation('en', match, p1, offset, string))
-        )
-
-        // Log response
-        console.log(`
-Response to GET ${req.url}
-Time:    ${new Date().toISOString()}
-Status:  200`)
-    } catch (e) { console.log(e) }
-}
+/**
+ * Redirects the user to /en.
+ * @param {ReqIncomingMessage} req 
+ * @param {ResServerResponse} res 
+ */
+module.exports.getEn = (req, res) => { res.redirect('/en') }

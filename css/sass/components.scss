@@ -24,15 +24,11 @@ body {
     border: none;
     outline: none;
     cursor: pointer;
-    
-    &:focus {
-        background: #ffffff1a;
-    }
 }
 
 .icon-button .icon {
     width: 100%;
-    color: $color-on-input;
+    color: $color-on-secondary;
 }
 
 // Inputs
@@ -93,7 +89,8 @@ input[type=submit] {
     height: 100%;
     margin: 0;
 
-    background-color: $color-secondary;
+    background: $color-secondary;
+    color: $color-on-secondary;
     border-radius: 25px;
 }
 
@@ -116,6 +113,10 @@ textarea {
 }
 
 /* Selects */
+
+.long-select {
+    width: 10em;
+}
 
 option {
     background-color: $color-bg;

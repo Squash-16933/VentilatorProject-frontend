@@ -20,6 +20,13 @@
         <img src="assets/League Logo F Orange FINAL.svg" alt="The LEAGUE of Amazing Programmers logo">
 
         <h1>{{home.title}}</h1>
+        <div id="language-select">
+            <i class="icon fas fa-globe"></i>
+            <select class="long-select" onchange="lang_switch()">
+                <option value="en">English</option>
+                <option value="es">Español</option>
+            </select>
+        </div>
     </header>
 
     <div id="line-top" class="line"></div>
@@ -93,7 +100,7 @@
             <fieldset>
                 <legend><h3><i class="icon fas fa-venus-mars"></i> {{home.controls.gender}}</h3></legend>
                 <select id="controls-profile-gender" name="gender" required autocomplete="off">
-                    <option selected>{{home.controls.gender.none}}</option>
+                    <option selected>&mdash;</option>
                     <option value="m">{{home.controls.gender.m}}</option>
                     <option value="f">{{home.controls.gender.f}}</option>
                 </select>
@@ -105,8 +112,8 @@
             </fieldset>
 
             <div id="controls-profile-submit-wrapper" class="submit-wrapper">
-                <input id="controls-profile-submit" type="submit" value="">
-                <span><i class="icon fas fa-check"></i> {{home.controls.submit}}</span>
+                <input id="controls-profile-submit" type="submit" value="{{home.controls.submit}}">
+                <!-- <span><i class="icon fas fa-check"></i> {{home.controls.submit}}</span> -->
             </div>
         </form>
     </div>

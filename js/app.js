@@ -1,3 +1,4 @@
+/* Protocol */
 class Handler {
     static h_getAll(response) {
         var humidity = document.querySelector('#stats-humidity .stat')
@@ -148,6 +149,27 @@ class Protocol {
 var protocol = new Protocol()
 
 /* Handlers */
+
+/*  When page loads */
+lang_arrange()
+
+/**
+ * Rearranges language selector.
+ */
+function lang_arrange() {
+    var currLang = window.location.pathname.replace(/^\/?([a-z]{2})(.*)/, `$1`)
+    var select = document.querySelector('#language-select')
+    select.value = currLang
+}
+
+/**
+ * Switches language in accordance with language selector.
+ */
+function lang_switch() {
+    var select = document.querySelector('#language-select')
+    window.location.pathname = window.location.pathname.replace(/^\/?([a-z]{2})(.*)/, `/${select.value}$2`)
+}
+
 function controls_profile_submit() {
     if (controls_profile_valid()) {
         var data = {}
