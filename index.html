@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>{{home}}</title>
+    <title>{{home}} | {{app}}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
@@ -19,7 +19,7 @@
     <header class="section">
         <img src="assets/League Logo F Orange FINAL.svg" alt="The LEAGUE of Amazing Programmers logo">
 
-        <h1>{{home.title}}</h1>
+        <h1>{{app}}</h1>
         <div id="language-select">
             <i class="icon fas fa-globe"></i>
             <select class="long-select" onchange="lang_switch()">
@@ -92,9 +92,8 @@
 
                 <select id="controls-profile-weight-unit" class="noClear" name="weight-unit" min="0" required
                     autocomplete="off">
-                    <option value="lb" selected>{{home.controls.weight.lb}}</option>
+                    <option value="lb">{{home.controls.weight.lb}}</option>
                     <option value="kg">{{home.controls.weight.kg}}</option>
-                    <option value="st">{{home.controls.weight.st}}</option>
                 </select>
             </fieldset>
 

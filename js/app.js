@@ -152,6 +152,16 @@ var protocol = new Protocol()
 
 /*  When page loads */
 lang_arrange()
+height_arrange()
+weight_arrange()
+
+/**
+ * Returns the page's current language.
+ * @returns ISO 3166-1 alpha-2 code
+ */
+function lang_current() {
+    return window.location.pathname.replace(/^\/?([a-z]{2})(.*)/, `$1`)
+}
 
 /**
  * Rearranges language selector.
@@ -191,8 +201,6 @@ function controls_profile_submit() {
                 data.weight = document.querySelector('#controls-profile-weight').value
             case 'kg':
                 data.weight = document.querySelector('#controls-profile-weight').value*0.45359237
-            case 'st':
-                data.weight = document.querySelector('#controls-profile-weight').value*14
         }
 
         protocol.send('setProfile', data)
@@ -212,12 +220,16 @@ function controls_profile_valid() {
     return valid;
 }
 
-function height_unit_changeUnit() {
+/**
+ * Switch to given unit, or when left blank, toggles unit.
+ * @param {String} target 'ft' or 'cm'
+ */
+function height_unit_changeUnit(target = null) {
     var active
     var inactive
 
     // Check if cm is inactive
-    if (document.querySelector('#controls-profile-height-cm').classList.contains('inactive')) {
+    if (target == 'cm' || (target == null && document.querySelector('#controls-profile-height-cm').classList.contains('inactive'))) {
         // Switch cm to active one
         active = document.querySelector('#controls-profile-height-cm')
         inactive = document.querySelector('#controls-profile-height-ft')
@@ -235,4 +247,20 @@ function height_unit_changeUnit() {
     active.classList.add('active')
     active.classList.remove('inactive')
     active.querySelector('input').setAttribute('required', 'required')
+}
+
+/**
+ * Rearranges height unit selector.
+ */
+ function height_arrange() {
+    if (lang_current() == 'en') height_unit_changeUnit('ft')
+    else height_unit_changeUnit('cm')
+}
+
+/**
+ * Rearranges weight unit selector.
+ */
+ function weight_arrange() {
+    if (lang_current() == 'en') document.querySelector('#controls-profile-weight-unit').value = 'lb'
+    else document.querySelector('#controls-profile-weight-unit').value = 'kg'
 }

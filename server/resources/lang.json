@@ -1,8 +1,13 @@
 {
+    "app": {
+        "en": "LeagueAir",
+        "es": "LigaAire",
+        "fr": "LigueAir"
+    },
     "home": {
-        "en": "LeagueAir | Home",
-        "es": "LigaAire | Incio",
-        "fr": "LigueAir | Accueil"
+        "en": "Home",
+        "es": "Incio",
+        "fr": "Accueil"
     },
     "home.title": {
         "en": "LeagueAir",
@@ -78,11 +83,6 @@
         "en": "kg",
         "es": "kg",
 		"fr": "kg"
-    },
-    "home.controls.weight.st": {
-        "en": "st",
-        "es": "st",
-		"fr": "st"
     },
     "home.controls.gender": {
         "en": "Biological sex",

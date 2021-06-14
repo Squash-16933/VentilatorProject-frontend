@@ -9,13 +9,10 @@ var transKey = JSON.parse(fs.readFileSync(path.resolve('./server/resources/lang.
 /**
  * Function for replaceAll that translates a page to a given language.
  * @param {String} lang ISO 3166-1 code for target language
- * @param {String} match The entire match
- * @param {String} p1 The translation ID
- * @param {Number} offset String index of the match
- * @param {String} string The entire string
+ * @param {String} str String to translate
  */
-function getTranslation(lang, match, p1, offset, string) {
-    return transKey[p1][lang]
+function getTranslation(lang, str) {
+    return str.replace(/{{([^}]+)}}/g, (match, p1, offset, string)=>transKey[p1][lang])
 }
 
 /**
@@ -35,7 +32,7 @@ Request: GET ${req.url}`)
 
         res.set('Content-Type', 'text/html')
         res.status(200).send(
-            fs.readFileSync(path.resolve('./index.html'), 'utf8').replace(/{{([^}]+)}}/g, (match, p1, offset, string)=>getTranslation(lang, match, p1, offset, string))
+            getTranslation(lang, fs.readFileSync(path.resolve('./index.html'), 'utf8'))
         )
 
         // Log response
