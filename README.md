@@ -21,6 +21,10 @@ Try resaving a file, which will cause the server to restart. Specify paths relat
 ## Folder structure
 - **`assets`** Image resources
 - **`build`** Compiled Sass and ES6
+  - **`css`** Compiled Sass
+    - **`theme0`** Compiled dark theme
+    - **`theme1`** Compiled light theme
+  - **`js`** Compiled ES6
 - **`css`** Stylesheets
     - **`fonts`** Font resources
     - **`sass`** Stylesheets (Sass)
@@ -33,7 +37,8 @@ Try resaving a file, which will cause the server to restart. Specify paths relat
     - `app.js` Scripts for `/index.html`
 - **`server`** Server side of the frontend
   - **`controllers`** Respond to client requests
-    - `home.js` Responds to homepage requests
+    - `translate.js` Translates homepage requests
+    - `theme.js` Changes to light or dark theme
   - **`resources`** Various resources
     - `lang.json` Translation key
   - `main.js` Starts the server

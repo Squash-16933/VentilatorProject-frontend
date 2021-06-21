@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-    <link href="./build/normalize.css" rel="stylesheet">
+    <link href="./build/css/normalize.css" rel="stylesheet">
 
-    <link href="./build/app.css" rel="stylesheet">
-    <link href="./build/components.css" rel="stylesheet">
-    <link href="./build/typography.css" rel="stylesheet">
+    <link href="./build/css/theme{{theme}}/app.css" rel="stylesheet">
+    <link href="./build/css/theme{{theme}}/components.css" rel="stylesheet">
+    <link href="./build/css/theme{{theme}}/typography.css" rel="stylesheet">
 
     <link rel='icon' href='./assets/favicon.png' type='image/png' />
 </head>
@@ -20,14 +20,16 @@
         <img src="assets/League Logo F Orange FINAL.svg" alt="The LEAGUE of Amazing Programmers logo">
 
         <h1>{{app}}</h1>
-        <div id="language-select">
+        <div id="language-select" class="selector">
             <i class="icon fas fa-globe"></i>
             <select class="long-select" onchange="lang_switch()">
-                <option value="en">English</option>
-                <option value="es">Español</option>
-                <option value="fr">Français</option>
+                <option value="en">🇬🇧&nbsp;&nbsp;English</option>
+                <option value="es">🇪🇸&nbsp;&nbsp;Español</option>
+                <option value="fr">🇫🇷&nbsp;&nbsp;Français</option>
             </select>
         </div>
+
+        <div id="theme-select" class="selector" onclick="theme_switch()"><i class="icon fas fa-sun"></i></div>
     </header>
 
     <div id="line-top" class="line"></div>
@@ -118,7 +120,7 @@
         </form>
     </div>
 
-    <script src="./build/app.js"></script>
+    <script src="./build/js/app.js"></script>
     <script src="https://kit.fontawesome.com/1c15d88451.js" crossorigin="anonymous"></script>
     <!-- Import Font Awesome icons -->
 </body>

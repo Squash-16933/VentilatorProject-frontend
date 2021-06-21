@@ -23,6 +23,8 @@ $color-stats-stat-unit: $color-stats-stat-unit-dark;
 }
 
 // Transition times
+$transition-theme-change: 200ms;
+
 $transition-line-expand: 800ms;
 $transition-title-flickerin: 700ms;
 
@@ -33,9 +35,14 @@ $transition-display: 800ms;
 body {
     width: 100vw;
     overflow-x: hidden;
-    
+
     margin: 0;
     padding: 0;
+}
+
+// Remove scrollbars
+::-webkit-scrollbar {
+    display: none;
 }
 
 .section {
@@ -46,6 +53,7 @@ body {
 header {
     width: 100%;
     height: 150px;
+    position: relative;
 }
 
 header h1 {
@@ -65,11 +73,6 @@ header h1 {
 .noClear {
     clear: none;
     display: inline;
-}
-
-#language-select {
-    float: right;
-    margin: 2em 5em;
 }
 
 // Lines
@@ -155,7 +158,7 @@ header h1 {
     justify-content: center;
 }
 
-// Logo
+// Header
 header img {
     margin: auto;
     display: inline;
@@ -163,6 +166,52 @@ header img {
     max-width: 50%;
     max-height: 100%;
     vertical-align: middle;
+}
+
+.selector {
+    background: mix($color-primary, transparent, 65%);
+
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    margin: 0;
+
+    position: absolute;
+    height: 75px;
+    right: 0;
+
+    cursor: pointer;
+
+    &:hover {
+        background: $color-primary;
+        transition: all $transition-theme-change;
+    }
+}
+
+#language-select {
+    top: 0;
+    border-bottom: $color-bg solid 2px;
+}
+
+#language-select select {
+    opacity: 0;
+    cursor: pointer;
+
+    position: absolute;
+    width: 100%;
+    height: 75px;
+    top: 0;
+    right: 0;
+}
+
+#theme-select {
+    bottom: 0;
+    border-top: $color-bg solid 2px;
+}
+
+.selector .icon {
+    color: $color-bg;
+    margin: 15px 35px 15px 15px;
 }
 
 // Controls
@@ -200,11 +249,11 @@ legend {
     width: 100%;
 }
 
-input[type=submit] {
+input[type="submit"] {
     width: 150px;
     height: 50px;
     margin: 40px auto;
-    
+
     text-align: center;
     color: $color-on-secondary;
     font-family: Inter;
@@ -224,9 +273,8 @@ input[type=submit] {
     width: 100%;
     height: 1.2em;
 
-    top: calc((50px - 1.2em)/2);
+    top: calc((50px - 1.2em) / 2);
     left: 0;
-    
 }
 
 #controls-profile-submit-wrapper span .icon {
@@ -270,7 +318,7 @@ input[type=submit] {
     from {
         transform: scale(1.5);
     }
-    
+
     to {
         transform: scale(1);
     }
@@ -325,7 +373,6 @@ input[type=submit] {
     }
 }
 
-
 // Media queries
 @media (max-width: 900px) {
     header {
@@ -356,7 +403,7 @@ input[type=submit] {
         animation-name: title-imgscale;
         animation-duration: $transition-title-moveup;
         animation-delay: $transition-title-flickerin;
-        animation-timing-function: cubic-bezier(0,.82,.54,1.8);
+        animation-timing-function: cubic-bezier(0, 0.82, 0.54, 1.8);
         animation-fill-mode: forwards;
     }
 
@@ -367,7 +414,8 @@ input[type=submit] {
         margin: 5px auto;
     }
 
-    #line-left, #line-right {
+    #line-left,
+    #line-right {
         display: none;
     }
 

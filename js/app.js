@@ -151,7 +151,7 @@ var protocol = new Protocol()
 /* Handlers */
 
 /*  When page loads */
-lang_arrange()
+theme_arrange()
 height_arrange()
 weight_arrange()
 
@@ -160,16 +160,7 @@ weight_arrange()
  * @returns ISO 3166-1 alpha-2 code
  */
 function lang_current() {
-    return window.location.pathname.replace(/^\/?([a-z]{2})(.*)/, `$1`)
-}
-
-/**
- * Rearranges language selector.
- */
-function lang_arrange() {
-    var currLang = window.location.pathname.replace(/^\/?([a-z]{2})(.*)/, `$1`)
-    var select = document.querySelector('#language-select select')
-    select.value = currLang
+    return new URL(window.location).searchParams.get('lang')
 }
 
 /**
@@ -177,7 +168,42 @@ function lang_arrange() {
  */
 function lang_switch() {
     var select = document.querySelector('#language-select select')
-    window.location.pathname = window.location.pathname.replace(/^\/?([a-z]{2})(.*)/, `/${select.value}$2`)
+
+    var url = new URL(window.location)
+    url.searchParams.set('lang', select.value)
+
+    window.location = url.href
+}
+
+/**
+ * Sets proper icon for theme selector.
+ */
+function theme_arrange() {
+    var theme = document.querySelector('#theme-select')
+    var url = new URL(window.location)
+
+    if (url.searchParams.get('theme') == 0) {
+        theme.innerHTML = '<i class="icon fas fa-sun"></i>'
+        console.log(theme.innerHTML)
+    } else {
+        theme.innerHTML = '<i class="icon fas fa-moon"></i>'
+        console.log(theme.innerHTML)
+    }
+}
+
+/**
+ * Switches theme in accordance with theme selector.
+ */
+function theme_switch() {
+    var url = new URL(window.location)
+
+    if (url.searchParams.get('theme') == 0) {
+        url.searchParams.set('theme', 1)
+    } else {
+        url.searchParams.set('theme', 0)
+    }
+
+    window.location = url.href
 }
 
 function controls_profile_submit() {

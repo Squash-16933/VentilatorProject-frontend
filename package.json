@@ -6,7 +6,7 @@
   "scripts": {
     "test": "npm start",
     "start": "npm run build & npm run open",
-    "build": "[ -d './build' ] && rm -dr ./build && npx babel ./js -d ./build & sass -s compressed ./css/sass:./build & cp ./css/normalize.css ./build/normalize.css",
+    "build": "bash build.sh",
     "open": "open ./index.html & start ./index.html",
     "server": "npm run build & nodemon ./server/main.js"
   },
@@ -41,6 +41,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "fs": "^0.0.1-security",
+    "localtunnel": "^2.0.1",
     "path": "^0.12.7"
   }
 }
