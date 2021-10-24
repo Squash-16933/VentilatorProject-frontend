@@ -230,6 +230,27 @@ Gets the amount of time that the ventilator has been active.
 {
     "data": 86400 // Time in seconds
 }
+```
+
+### `getResp` - GET
+Gets the set respiration rate. The client must first set the patient's profile with `setProfile` so the server can calculate the respiration rate.
+
+#### Response
+```js
+{
+    "data": 30 // Respiration rate
+}
+```
+
+### `getIE` - GET
+Gets the I:E ratio. The client must first set the patient's profile with `setProfile` so the server can calculate the respiration rate.
+
+#### Response
+```js
+{
+    "data": 0.5 // I:E ratio
+}
+```
 
 ## Version numbers
 ![CalVer MAJOR.YY0W.MICRO](https://img.shields.io/badge/calver-MAJOR.YY0W.MICRO-22bfda.svg)

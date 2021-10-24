@@ -16,20 +16,23 @@
 </head>
 
 <body>
-    <header class="section">
-        <img src="assets/League Logo F Orange FINAL.svg" alt="The LEAGUE of Amazing Programmers logo">
-
-        <h1>{{app}}</h1>
-        <div id="language-select" class="selector">
+    <div id="menu">
+        <button id="language-select">
             <i class="icon fas fa-globe"></i>
             <select class="long-select" onchange="lang_switch()">
                 <option value="en">🇬🇧&nbsp;&nbsp;English</option>
                 <option value="es">🇪🇸&nbsp;&nbsp;Español</option>
                 <option value="fr">🇫🇷&nbsp;&nbsp;Français</option>
             </select>
-        </div>
+        </button>
 
-        <div id="theme-select" class="selector" onclick="theme_switch()"><i class="icon fas fa-sun"></i></div>
+        <button id="theme-select" onclick="theme_switch()"><i class="icon fas fa-sun"></i></button>
+    </div>
+
+    <header class="section">
+        <img src="assets/League Logo F Orange FINAL.svg" alt="The LEAGUE of Amazing Programmers logo">
+
+        <h1>{{app}}</h1>
     </header>
 
     <div id="line-top" class="line"></div>
@@ -54,6 +57,16 @@
 
         <div id="stats-time" class="stat-block">
             <h2><i class="icon fas fa-stopwatch"></i>{{home.stats.time}}</h2>
+            <div class="stat">...</div>
+        </div>
+
+        <div id="stats-respiration" class="stat-block">
+            <h2><i class="icon fas fa-tachometer-alt"></i>{{home.stats.respiration}}</h2>
+            <div class="stat">...</div>
+        </div>
+
+        <div id="stats-ieratio" class="stat-block">
+            <h2><i class="icon fas fa-exchange-alt"></i>{{home.stats.ieratio}}</h2>
             <div class="stat">...</div>
         </div>
     </div>
@@ -84,7 +97,7 @@
                 </div>
                 </p>
                 <p>
-                    <button class="icon-button" id="#controls-profile-height-unit" onclick="height_unit_changeUnit()"><i class="icon fas fa-sync"></i></button>
+                    <button class="icon-button" id="controls-profile-height-unit" onclick="height_unit_changeUnit()"><i class="icon fas fa-sync"></i></button>
                 </p>
             </fieldset>
 

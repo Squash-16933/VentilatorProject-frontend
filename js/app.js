@@ -42,6 +42,20 @@ class Handler {
         }
     }
 
+    static h_getResp(response) {
+        var resp = response.data
+
+        var el = document.querySelector('#stats-respiration .stat')
+        el.innerHTML = resp
+    }
+
+    static h_getIE(response) {
+        var resp = response.data
+
+        var el = document.querySelector('#stats-ieratio .stat')
+        el.innerHTML = resp
+    }
+
     static addTime(num, unit) {
         var el = document.createElement('div')
         el.classList.add('stat-time-block')
@@ -129,6 +143,11 @@ class Protocol {
                     case 'getTime':
                         Handler.h_getTime(JSON.parse(event.data))
                         break
+                    case 'getResp':
+                        Handler.h_getResp(JSON.parse(event.data))
+                        break
+                    case 'getIE':
+                        Handler.h_getIE(JSON.parse(event.data))
                 }
             }
 
@@ -151,6 +170,7 @@ var protocol = new Protocol()
 /* Handlers */
 
 /*  When page loads */
+lang_arrange()
 theme_arrange()
 height_arrange()
 weight_arrange()
@@ -161,6 +181,14 @@ weight_arrange()
  */
 function lang_current() {
     return new URL(window.location).searchParams.get('lang')
+}
+
+/**
+ * Rearranges language selector.
+ */
+ function lang_arrange() {
+    var select = document.querySelector('#language-select select')
+    select.value = lang_current()
 }
 
 /**
@@ -184,10 +212,8 @@ function theme_arrange() {
 
     if (url.searchParams.get('theme') == 0) {
         theme.innerHTML = '<i class="icon fas fa-sun"></i>'
-        console.log(theme.innerHTML)
     } else {
         theme.innerHTML = '<i class="icon fas fa-moon"></i>'
-        console.log(theme.innerHTML)
     }
 }
 
@@ -208,29 +234,41 @@ function theme_switch() {
 
 function controls_profile_submit() {
     if (controls_profile_valid()) {
+        console.log('Yea, truly valid')
         var data = {}
 
         // Age
         data.age = parseFloat(document.querySelector('#controls-profile-age-yr').value) + parseFloat(document.querySelector('#controls-profile-age-mo').value)/12
 
         // Height
-        switch (document.querySelector('#controls-profile-height-unit').value) {
+        switch (height_unit_getUnit()) {
             case 'ft':
                 data.height = document.querySelector('#controls-profile-height-ft-ft').value*12 + document.querySelector('#controls-profile-height-ft-in').value
             case 'cm':
                 data.height = document.querySelector('#controls-profile-height-cm-cm').value/2.54
         }
 
+        console.log('hgt-unit:')
+        console.log(document.querySelector('#controls-profile-height-unit').value)
+
+        console.log('hgt:')
+        console.log(data.height)
+
         // Weight
-        switch (document.querySelector('#controls-profile-weight-unit').value) {
+        switch (weight_unit_getUnit()) {
             case 'lb':
                 data.weight = document.querySelector('#controls-profile-weight').value
             case 'kg':
                 data.weight = document.querySelector('#controls-profile-weight').value*0.45359237
         }
 
+        // Gender
+        data.gender = document.querySelector('#controls-profile-gender').value
+        
         protocol.send('setProfile', data)
-    }
+        protocol.send('getResp') // Start getting respiration rate
+        protocol.send('getIE') // Start getting I:E ratio
+    } else throw 'Patient profile is invalid'
 }
 
 function controls_profile_valid() {
@@ -247,15 +285,15 @@ function controls_profile_valid() {
 }
 
 /**
- * Switch to given unit, or when left blank, toggles unit.
+ * Switch to given height unit, or when left blank, toggles unit.
  * @param {String} target 'ft' or 'cm'
  */
 function height_unit_changeUnit(target = null) {
     var active
     var inactive
 
-    // Check if cm is inactive
-    if (target == 'cm' || (target == null && document.querySelector('#controls-profile-height-cm').classList.contains('inactive'))) {
+    // Check if cm is target
+    if (target == 'cm' || (target == null && height_unit_getUnit() == 'ft')) {
         // Switch cm to active one
         active = document.querySelector('#controls-profile-height-cm')
         inactive = document.querySelector('#controls-profile-height-ft')
@@ -276,6 +314,14 @@ function height_unit_changeUnit(target = null) {
 }
 
 /**
+ * Get the active height unit.
+ * @returns {String} 'ft' or 'cm'
+ */
+function height_unit_getUnit() {
+    return document.querySelector('#controls-profile-height-cm').classList.contains('inactive') ? 'ft' : 'cm'
+}
+
+/**
  * Rearranges height unit selector.
  */
  function height_arrange() {
@@ -289,4 +335,12 @@ function height_unit_changeUnit(target = null) {
  function weight_arrange() {
     if (lang_current() == 'en') document.querySelector('#controls-profile-weight-unit').value = 'lb'
     else document.querySelector('#controls-profile-weight-unit').value = 'kg'
+}
+
+/**
+ * Get the active weight unit.
+ * @returns {String} 'lb' or 'kg'
+ */
+function weight_unit_getUnit() {
+    return document.querySelector('#controls-profile-weight-unit').value
 }

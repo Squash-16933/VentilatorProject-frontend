@@ -53,7 +53,6 @@ body {
 header {
     width: 100%;
     height: 150px;
-    position: relative;
 }
 
 header h1 {
@@ -168,19 +167,38 @@ header img {
     vertical-align: middle;
 }
 
-.selector {
+#menu {
+    position: absolute;
+    width: 50px;
+    top: 0;
+    right: 0;
+
+    display: flex;
+    flex-wrap: wrap;
+    z-index: 2;
+}
+
+#menu button {
     background: mix($color-primary, transparent, 65%);
+    border: none;
+    border-radius: 10px 0 0 10px;
+    opacity: 0;
+    width: 100%;
+    height: 100px;
+
+    margin: 5px auto;
 
     display: flex;
     align-items: center;
+    justify-content: flex-end;
     box-sizing: border-box;
-    margin: 0;
-
-    position: absolute;
-    height: 75px;
-    right: 0;
 
     cursor: pointer;
+
+    animation-name: fadein;
+    animation-duration: $transition-display;
+    animation-delay: $transition-title-flickerin + $transition-line-expand;
+    animation-fill-mode: forwards;
 
     &:hover {
         background: $color-primary;
@@ -188,12 +206,7 @@ header img {
     }
 }
 
-#language-select {
-    top: 0;
-    border-bottom: $color-bg solid 2px;
-}
-
-#language-select select {
+#menu button select {
     opacity: 0;
     cursor: pointer;
 
@@ -204,14 +217,8 @@ header img {
     right: 0;
 }
 
-#theme-select {
-    bottom: 0;
-    border-top: $color-bg solid 2px;
-}
-
-.selector .icon {
+#menu button .icon {
     color: $color-bg;
-    margin: 15px 35px 15px 15px;
 }
 
 // Controls
