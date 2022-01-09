@@ -216,7 +216,7 @@ Sets the patient's settings. The patient's settings are used to configure the ve
 
 #### `data`
 *Optional*
-- `age` Patient's age (years)
+- `age` Patient's age (months)
 - `height` Patient's height (in)
 - `weight` Patient's weight (lb)
 - `gender` Patient's biological sex (`male` or `female`) (no way to handle intersex yet)

@@ -106,8 +106,8 @@ class Protocol {
      * This listener triggers in response to the server sending its first message.
      */
     onReady() {
-        this.send('getAll')
-        this.send('getTime')
+        // this.send('getAll')
+        // this.send('getTime')
     }
 
     /**
@@ -238,14 +238,16 @@ function controls_profile_submit() {
         var data = {}
 
         // Age
-        data.age = parseFloat(document.querySelector('#controls-profile-age-yr').value) + parseFloat(document.querySelector('#controls-profile-age-mo').value)/12
+        data.age = parseInt(document.querySelector('#controls-profile-age-yr').value)*12 + parseInt(document.querySelector('#controls-profile-age-mo').value)
 
         // Height
         switch (height_unit_getUnit()) {
             case 'ft':
-                data.height = document.querySelector('#controls-profile-height-ft-ft').value*12 + document.querySelector('#controls-profile-height-ft-in').value
+                data.height = parseInt(document.querySelector('#controls-profile-height-ft-ft').value)*12 + parseInt(document.querySelector('#controls-profile-height-ft-in').value)
+                break
             case 'cm':
                 data.height = document.querySelector('#controls-profile-height-cm-cm').value/2.54
+                break
         }
 
         console.log('hgt-unit:')
@@ -266,8 +268,8 @@ function controls_profile_submit() {
         data.gender = document.querySelector('#controls-profile-gender').value
         
         protocol.send('setProfile', data)
-        protocol.send('getResp') // Start getting respiration rate
-        protocol.send('getIE') // Start getting I:E ratio
+        // protocol.send('getResp') // Start getting respiration rate
+        // protocol.send('getIE') // Start getting I:E ratio
     } else throw 'Patient profile is invalid'
 }
 
